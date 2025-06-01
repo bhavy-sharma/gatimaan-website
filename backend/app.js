@@ -16,6 +16,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('home');
 });
+app.get('/login', (req, res) => {
+  res.render('./auth/login');
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
