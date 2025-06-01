@@ -11,9 +11,10 @@ app.set('views', path.join(__dirname, 'views'));
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // Sample route
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Student Consultancy' });
+  res.render('home');
 });
 
 const PORT = process.env.PORT || 5000;
