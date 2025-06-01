@@ -3,5 +3,24 @@
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0"
-  }
+  },
+  "name": "gatimaan-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavy-sharma/gatimaan-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bhavy-sharma/gatimaan-website/issues"
+  },
+  "homepage": "https://github.com/bhavy-sharma/gatimaan-website#readme"
 }
