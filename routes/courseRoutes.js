@@ -1,32 +1,81 @@
-// routes/courseRoutes.js
-
 const express = require('express');
 const Course = require('../models/courses.model');
 const router = express.Router();
 
-// POST /courses - Add new course
-router.post('/', async (req, res) => {
+// ✅ Specific routes first
+
+// GET /courses/admin/add — Show add course form
+router.get('/admin/add', (req, res) => {
+  res.render('admin/add-courses', { error: null, success: null });
+});
+
+// POST /courses/admin/add — Handle form submission
+router.post('/admin/add', async (req, res) => {
+  const {
+    imageUrl = '',
+    title = '',
+    shortDescription = '',
+    longDesciption = '',
+    adminPassword = ''
+  } = req.body;
+
+
+  if (adminPassword !== process.env.ADMIN_PASSWORD) {
+    return res.render('admin/add-courses', {
+      error: 'Invalid admin password',
+      body: req.body
+    });
+  }
+
+  if (!imageUrl || !title || !shortDescription || !longDesciption) {
+    return res.render('admin/add-courses', {
+      error: 'All fields are required',
+      body: req.body
+    });
+  }
+
   try {
-    const course = new Course(req.body);
-    await course.save();
-    res.status(201).json(course);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+    const newCourse = new Course({ imageUrl, title, shortDescription, longDesciption });
+    await newCourse.save();
+
+    res.render('admin/add-courses', {
+      success: 'Course added successfully!',
+      body: {}
+    });
+  } catch (error) { // 🔥 Handle errors here instead of inside try/catch block
+    console.error(error); // 🔥 Log the error for debugging
+    res.status(500).send('Server Error');
   }
 });
 
-// GET /courses - Render courses.ejs with all courses
+  // if (error.name === 'ValidationError') {
+  //     const errors = {};
+  //     for (let [key, value] of Object.entries(err.errors)) {
+  //       errors[key] = value.message;
+  //     }
+
+  //     return res.render('admin/add-courses', {
+  //       error: 'Validation failed',
+  //       errors: errors,
+  //       body: req.body
+  //     });
+  //   }
+
+// 🟡 General routes
+
+// GET /courses — Render all courses
 router.get('/', async (req, res) => {
   try {
-    const courses = await Course.find(); // Fetch all courses
-    res.render('components/courses', { courses }); // Make sure views/courses.ejs exists
+    const courses = await Course.find();
+    res.render('components/courses', { courses });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');
   }
 });
 
-// GET /courses/:id - View single course
+// ⚠️ This must come LAST
+// GET /courses/:id — View single course
 router.get('/:id', async (req, res) => {
   try {
     const course = await Course.findById(req.params.id);
@@ -34,7 +83,7 @@ router.get('/:id', async (req, res) => {
 
     res.send(`
       <h1>${course.title}</h1>
-      <p>${course.longDescription}</p>
+      <p>${course.longDesciption}</p>
     `);
   } catch (err) {
     console.error(err);

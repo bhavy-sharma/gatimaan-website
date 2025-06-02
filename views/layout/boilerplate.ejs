@@ -9,19 +9,64 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/footer.css">
-
-    
-    
 </head>
 <body>
     <%- include("../components/Header.ejs") %>
     <%- include("../components/carousel.ejs") %>
+
+    <!-- 📰 News Section Start -->
+    <section class="news-section">
+        <div class="section-container">
+            <h2>Latest Updates</h2>
+            <div class="category-wrapper">
+                <!-- Admit Card -->
+                <div class="category-box">
+                    <h3>Admit Card</h3>
+                    <ul>
+                        <% if (admitCards && admitCards.length > 0) { %>
+                            <% admitCards.forEach(news => { %>
+                                <li><a href="/news/Admit%20Card"><%= news.title %></a></li>
+                            <% }) %>
+                        <% } else { %>
+                            <li>No updates yet.</li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <!-- Admission -->
+                <div class="category-box">
+                    <h3>Admission</h3>
+                    <ul>
+                        <% if (admissions && admissions.length > 0) { %>
+                            <% admissions.forEach(news => { %>
+                                <li><a href="/news/Admission"><%= news.title %></a></li>
+                            <% }) %>
+                        <% } else { %>
+                            <li>No updates yet.</li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <!-- Result -->
+                <div class="category-box">
+                    <h3>Result</h3>
+                    <ul>
+                        <% if (results && results.length > 0) { %>
+                            <% results.forEach(news => { %>
+                                <li><a href="/news/Result"><%= news.title %></a></li>
+                            <% }) %>
+                        <% } else { %>
+                            <li>No updates yet.</li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 📰 News Section End -->
+
     <%- include("../components/Footer.ejs") %>
 
-
-
     <script src="/js/carousel.js"></script>
-   
 </body>
 </html>
-

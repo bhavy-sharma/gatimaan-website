@@ -1,0 +1,43 @@
+<!-- views/add-news.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add News</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        label { display: block; margin-top: 10px; }
+        input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+
+    <h2>Submit New News</h2>
+
+    <form action="/add-news" method="POST">
+        <label for="title">Post Title:</label>
+        <input type="text" name="title" required>
+
+        <label for="description">Description:</label>
+        <textarea name="description" rows="4" required></textarea>
+
+        <label for="newsTitle">News Title:</label>
+        <input type="text" name="newsTitle" required>
+
+        <label for="newsLink">News Link:</label>
+        <input type="url" name="newsLink" required>
+
+        <label for="category">Select Category:</label>
+        <select name="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="Admit Card">Admit Card</option>
+            <option value="Admission">Admission</option>
+            <option value="Result">Result</option>
+        </select>
+
+        <button type="submit">Submit News</button>
+    </form>
+
+</body>
+</html>

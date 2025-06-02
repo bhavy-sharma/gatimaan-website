@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add News</title>
+</head>
+<body>
+
+    <h2>Add New News</h2>
+
+    <form action="/add-news" method="POST">
+        <label for="title">Post Title:</label><br>
+        <input type="text" name="title" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea name="description" required></textarea><br><br>
+
+        <label for="newsTitle">News Title:</label><br>
+        <input type="text" name="newsTitle" required><br><br>
+
+        <label for="newsLink">News Link:</label><br>
+        <input type="url" name="newsLink" required><br><br>
+
+        <label for="category">Category:</label><br>
+        <select name="category" required>
+            <option value="">--Select Category--</option>
+            <option value="Admit Card">Admit Card</option>
+            <option value="Admission">Admission</option>
+            <option value="Result">Result</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
