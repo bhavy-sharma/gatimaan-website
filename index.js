@@ -67,6 +67,10 @@ app.get('/layout/courses', async (req, res, next) => {
   }
 });
 
+app.get('/news' , (req, res) => {
+  res.render('news');
+});
+
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {

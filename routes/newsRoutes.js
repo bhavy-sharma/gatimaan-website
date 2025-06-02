@@ -35,11 +35,17 @@ router.post('/add-news', async (req, res) => {
 });
 
 // GET route to view news by category
-router.get('/news/:category', async (req, res) => {
-    const category = req.params.category;
+router.get('/news', async (req, res) => {
     try {
-        const newsList = await News.find({ category }).sort({ createdAt: -1 });
-        res.render('news', { category, newsList });
+        // Get all news items or filter by category if provided
+        const category = req.query.category || 'All';
+        const query = category === 'All' ? {} : { category };
+        
+        const newsList = await News.find(query).sort({ createdAt: -1 });
+        res.render('news', { 
+            category: category,
+            newsList: newsList
+        });
     } catch (err) {
         console.error(err);
         res.status(500).send("Server Error");
