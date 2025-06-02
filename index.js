@@ -1,9 +1,9 @@
 // index.js
 
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors'); // 🔥 Added missing import
-require('dotenv').config();
 const mongoose = require('mongoose');
 const courseRoutes = require('./routes/courseRoutes.js');
 const app = express();
@@ -14,7 +14,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-app.use(express.json()); // Required to parse JSON request bodies
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));// Required to parse JSON request bodies
 app.use('/courses', courseRoutes);
 
 app.get('/', (req, res) => {
