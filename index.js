@@ -48,6 +48,10 @@ app.get('/', async (req, res) => {
   }
 });
 
+app.get('/layout/about' , (req, res) => {
+  res.render('layout/about');
+})
+
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
