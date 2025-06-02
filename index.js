@@ -1,6 +1,8 @@
 // index.js
+
 const express = require('express');
 const path = require('path');
+const cors = require('cors'); // 🔥 Added missing import
 require('dotenv').config();
 const mongoose = require('mongoose');
 const courseRoutes = require('./routes/courseRoutes');
@@ -15,10 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Routes
+app.use(cors());
+app.use(express.json()); // Required to parse JSON request bodies
 app.use('/courses', courseRoutes);
 app.use('/', newsRouter); // ✅ Use the imported router instance
 
