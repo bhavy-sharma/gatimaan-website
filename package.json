@@ -9,10 +9,26 @@
   "author": "Bhavy Sharma",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
     "bootstrap": "^5.3.6",
+=======
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+>>>>>>> fazal
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^5.1.0",
-    "flowbite": "^3.1.2"
-  }
+    "flowbite": "^3.1.2",
+    "mongoose": "^8.15.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavy-sharma/gatimaan-website.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bhavy-sharma/gatimaan-website/issues"
+  },
+  "homepage": "https://github.com/bhavy-sharma/gatimaan-website#readme"
 }
