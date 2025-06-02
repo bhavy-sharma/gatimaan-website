@@ -2,11 +2,11 @@
 
 const express = require('express');
 const path = require('path');
-// const cors = require('cors'); // 🔥 Added missing import
+const cors = require('cors');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const courseRoutes = require('./routes/courseRoutes');
-const newsRouter = require('./routes/newsRoutes'); // ✅ Import router
+const newsRouter = require('./routes/newsRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,25 +17,31 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(cors());
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true })); // Required to parse JSON request bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/courses', courseRoutes);
-app.use('/', newsRouter); // ✅ Use the imported router instance
+app.use('/', newsRouter);
 
 // Home route
 app.get('/', async (req, res) => {
   try {
     const News = require('./models/News');
-    const admitCards = await News.find({ category: 'Admit Card' }).limit(5);
-    const admissions = await News.find({ category: 'Admission' }).limit(5);
-    const results = await News.find({ category: 'Result' }).limit(5);
+    const Course = require('./models/courses.model');
+
+    const [admitCards, admissions, results, courses] = await Promise.all([
+      News.find({ category: 'Admit Card' }).limit(5),
+      News.find({ category: 'Admission' }).limit(5),
+      News.find({ category: 'Result' }).limit(5),
+      Course.find()
+    ]);
 
     res.render('layout/boilerplate', {
       admitCards,
       admissions,
-      results
+      results,
+      courses
     });
+
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
@@ -51,13 +57,6 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('❌ Error connecting to MongoDB:', err.message);
     process.exit(1);
   });
-
-
-
-app.get('/add-news', (req, res) => {
-  res.render('add-news.ejs'); 
-});
-
 
 // Start Server
 app.listen(port, () => {
