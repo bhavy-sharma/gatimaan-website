@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/courses', courseRoutes);
 app.use('/', newsRouter);
+app.use(cors());
 
 // Home route
 app.get('/', async (req, res) => {
@@ -75,6 +76,7 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('❌ Error connecting to MongoDB:', err.message);
     process.exit(1);
   });
+
 
 // Start Server
 app.listen(port, () => {

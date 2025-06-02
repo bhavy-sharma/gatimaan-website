@@ -3,6 +3,16 @@ const express = require('express');
 const router = express.Router();
 const News = require('../models/News');
 
+
+router.get('/add-news', (req, res) => {
+    try {
+        res.render('add-news');
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
+    }
+});
+
 // POST route to submit form data
 router.post('/add-news', async (req, res) => {
     const { title, description, newsTitle, newsLink, category } = req.body;
