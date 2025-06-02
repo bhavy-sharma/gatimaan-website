@@ -18,7 +18,8 @@ app.set('views', path.join(__dirname, 'views'));
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(cors());
-app.use(express.json()); // Required to parse JSON request bodies
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); // Required to parse JSON request bodies
 app.use('/courses', courseRoutes);
 app.use('/', newsRouter); // ✅ Use the imported router instance
 
