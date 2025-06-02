@@ -9,10 +9,6 @@
   "author": "Bhavy Sharma",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-=======
-    "cors": "^2.8.5",
->>>>>>> fazal
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
