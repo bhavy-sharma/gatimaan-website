@@ -1,8 +1,10 @@
+// routes/courseRoutes.js
+
 const express = require('express');
-const Course = require('../models/courses.model'); // Make sure path is correct
+const Course = require('../models/courses.model');
 const router = express.Router();
 
-// POST /courses - Add new course (already working)
+// POST /courses - Add new course
 router.post('/', async (req, res) => {
   try {
     const course = new Course(req.body);
@@ -14,23 +16,22 @@ router.post('/', async (req, res) => {
 });
 
 // GET /courses - Render courses.ejs with all courses
-router.get('/courses', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const courses = await Course.find(); // Fetch all courses from MongoDB
-    res.render('views/components/courses', { courses }); // This will render views/courses.ejs
+    const courses = await Course.find(); // Fetch all courses
+    res.render('components/courses', { courses }); // Make sure views/courses.ejs exists
   } catch (err) {
-    console.error(err);   
+    console.error(err);
     res.status(500).send('Server Error');
   }
 });
 
-// GET /courses/:id - View single course (fix: use EJS or HTML template instead of res.render with string)
+// GET /courses/:id - View single course
 router.get('/:id', async (req, res) => {
   try {
     const course = await Course.findById(req.params.id);
     if (!course) return res.status(404).send('Course not found');
 
-    // Better: render a view like course-detail.ejs instead of sending raw HTML
     res.send(`
       <h1>${course.title}</h1>
       <p>${course.longDescription}</p>
