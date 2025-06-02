@@ -1,6 +1,9 @@
    .about-vision {
         /* background: linear-gradient(to right, #e0ecf8, #d2e4f2); */
         background-image: url(/images/girl1.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
       font-family: 'Roboto', sans-serif;
       display: flex;
       flex-direction: column;
