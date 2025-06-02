@@ -1,25 +1,17 @@
-<header class="header">
-  <div class="header-content">
-    <!-- Logo -->
-    <a href="logo.html" class="logo">
-      <img src="/images/apple.jpg" alt="Online Gatimaan Logo" class="logo-img" />
-    </a>
-
-    <!-- Navigation -->
-    <nav class="nav-center">
-      <ul>
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">News & Event</a></li>
-      </ul>
-    </nav>
-
-    <!-- Contact Info -->
-    <div class="contact-info">
-      <p>📞 +91-9876543210</p>
-      <p>✉️ info@gatimaan.com</p>
-    </div>
-  </div>
+<header class="navbar">
+  <div class="logo">Gatimaan</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav class="nav-links">
+    <a href="#">Home</a>
+    <a href="#" class="highlight">Courses</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#" class="highlight">News & Event</a>
+  </nav>
 </header>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('show');
+  }
+</script> 
