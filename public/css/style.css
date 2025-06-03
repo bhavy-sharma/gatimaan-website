@@ -180,3 +180,9 @@ body {
 .category-box a:hover {
     text-decoration: underline;
 }
+
+header {
+  width: 100%;
+  padding: 15px 20px;
+  /* No margin-bottom or set it to 0 */
+}
