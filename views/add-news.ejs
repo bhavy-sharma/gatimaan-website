@@ -9,11 +9,15 @@
         label { display: block; margin-top: 10px; }
         input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; }
         button { margin-top: 15px; padding: 10px 20px; }
+        .error { color: red; }
     </style>
 </head>
 <body>
 
     <h2>Submit New News</h2>
+    <% if (locals.error) { %>
+        <div class="error"><%= locals.error %></div>
+    <% } %>
 
     <form action="/add-news" method="POST">
         <label for="title">Post Title:</label>
@@ -35,6 +39,9 @@
             <option value="Admission">Admission</option>
             <option value="Result">Result</option>
         </select>
+
+        <label for="newsLink">Admin password</label>
+        <input type="password" name="adminpassword" required>
 
         <button type="submit">Submit News</button>
     </form>

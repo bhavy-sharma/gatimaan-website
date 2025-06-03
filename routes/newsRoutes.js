@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const News = require('../models/News');
-
+require('dotenv').config();
 
 router.get('/add-news', (req, res) => {
     try {
@@ -15,7 +15,14 @@ router.get('/add-news', (req, res) => {
 
 // POST route to submit form data
 router.post('/add-news', async (req, res) => {
-    const { title, description, newsTitle, newsLink, category } = req.body;
+    const { title, description, newsTitle, newsLink, category , adminpassword } = req.body;
+
+      if(adminpassword !== process.env.ADMIN_PASSWORD){
+            return res.render('add-news', {
+                error: 'Invalid admin password',
+                body: req.body
+            });
+        }
 
     try {
         const newNews = new News({
@@ -25,6 +32,7 @@ router.post('/add-news', async (req, res) => {
             newsLink,
             category
         });
+       
 
         await newNews.save();
         res.redirect(`/news/${category}`);
