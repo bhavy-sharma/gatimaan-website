@@ -54,9 +54,16 @@ app.get('/layout/about' , (req, res) => {
   res.render('layout/about', { currentPath: req.path });
 })
 
-app.get('/layout/contact' , (req, res) => {
-  res.render('layout/contact', { currentPath: req.path });
-})
+app.get('/layout/contact', (req, res) => {
+    try {
+        res.render('layout/contact', { 
+            currentPath: req.path 
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server Error");
+    }
+});
 
 app.get('/layout/courses', async (req, res, next) => {
   try {
