@@ -1,18 +1,27 @@
-
 <header class="navbar">
   <div class="logo">Gatimaan</div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav class="nav-links">
-    <a href="/">Home</a>
-    <a href="/layout/courses" class="highlight">Courses</a>
-    <a href="/layout/about">About</a>
-    <a href="/layout/contact">Contact</a>
-    <a href="/news" class="highlight">News & Event</a>
+
+  <button class="hamburger" id="hamburger">
+    ☰
+  </button>
+
+  <nav class="nav-links" id="nav-links">
+    <button class="nav-btn"><a href="/">Home</a></button>
+    <button class="nav-btn"><a href="/layout/courses" class="highlight">Courses</a></button>
+    <button class="nav-btn"><a href="/layout/about">About</a></button>
+    <button class="nav-btn"><a href="/layout/contact">Contact</a></button>
+    <button class="nav-btn"><a href="/news" class="highlight">News & Event</a></button>
   </nav>
+
+  <div class="contact-button">
+    Call us : +91 0000000000 <br>
+    Email us : account@gatimaan.com
+  </div>
 </header>
 
 <script>
-  function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('show');
-  }
-</script> 
+  document.getElementById('hamburger').addEventListener('click', function () {
+  document.getElementById('nav-links').classList.toggle('active');
+});
+</script>
+
