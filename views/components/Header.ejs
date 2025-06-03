@@ -20,8 +20,22 @@
 </header>
 
 <script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-  document.getElementById('nav-links').classList.toggle('active');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+// Toggle menu on hamburger click
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Optional: Close menu when clicking outside
+document.addEventListener('click', function(event) {
+  const isClickInsideNav = navLinks.contains(event.target);
+  const isClickOnHamburger = hamburger.contains(event.target);
+
+  if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
+    navLinks.classList.remove('active');
+  }
 });
 </script>
 
