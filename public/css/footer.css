@@ -46,6 +46,7 @@
   font-size: 14px;
   color: #ddd;
   margin: 8px 0;
+  /* text-align: center; */
 }
 
 .footer-box ul {
@@ -54,26 +55,30 @@
 }
 
 .footer-box ul li a {
-  color: #ddd;
+  color: #fff;
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-box ul li a:hover {
-  color: #00d1b2;
+  color: #fff;
 }
 
-/* Social Icons */
-.social-icons img {
-  width: 28px;
-  height: 28px;
-  margin-right: 10px;
-  transition: transform 0.3s;
+
+.social-icons i {
+  transform: scale(1.5);
 }
 
-.social-icons img:hover {
-  transform: scale(1.2);
+.social-icons{
+  display: flex;
+  /* gap: 25px; */
+  justify-content: space-evenly;
+  padding-top: 2rem;
 }
+
+
+
+
 
 /* Footer Bottom */
 .footer-bottom {
@@ -89,4 +94,9 @@
 
 .footer-bottom p {
   margin: 5px 0;
+}
+
+
+.footer-box p a {
+  color: white;
 }
