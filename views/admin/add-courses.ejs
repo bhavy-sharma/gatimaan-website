@@ -2,49 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Course</title>
   <script src="https://cdn.tailwindcss.com"></script> 
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center px-4">
 
-  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
-    <h2 class="text-2xl font-bold mb-6 text-center">Add New Course</h2>
+  <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md w-full max-w-lg sm:max-w-xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-center">Add New Course</h2>
 
     <% if (locals.error) { %>
-      <div class="bg-red-100 text-red-700 p-2 rounded mb-4"><%= locals.error %></div>
+      <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm"><%= locals.error %></div>
     <% } %>
 
     <% if (locals.success) { %>
-      <div class="bg-green-100 text-green-700 p-2 rounded mb-4"><%= locals.success %></div>
+      <div class="bg-green-100 text-green-700 p-3 rounded mb-4 text-sm"><%= locals.success %></div>
     <% } %>
 
     <form action="/courses/admin/add" method="POST">
+      <!-- Image URL -->
       <div class="mb-4">
-        <label class="block text-gray-700 mb-2">Image URL</label>
-        <input type="text" name="imageUrl" required class="w-full border rounded px-3 py-2">
+        <label class="block text-gray-700 mb-2 text-sm font-medium">Image URL</label>
+        <input type="text" name="imageUrl" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
 
+      <!-- Title -->
       <div class="mb-4">
-        <label class="block text-gray-700 mb-2">Title</label>
-        <input type="text" name="title" required class="w-full border rounded px-3 py-2">
+        <label class="block text-gray-700 mb-2 text-sm font-medium">Title</label>
+        <input type="text" name="title" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
 
+      <!-- Short Description -->
       <div class="mb-4">
-        <label class="block text-gray-700 mb-2">Short Description</label>
-        <textarea name="shortDescription" required class="w-full border rounded px-3 py-2"></textarea>
+        <label class="block text-gray-700 mb-2 text-sm font-medium">Short Description</label>
+        <textarea name="shortDescription" rows="3" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
       </div>
 
+      <!-- Long Description -->
       <div class="mb-4">
-        <label class="block text-gray-700 mb-2">Long Description</label>
-        <textarea name="longDesciption" required class="w-full border rounded px-3 py-2"></textarea>
+        <label class="block text-gray-700 mb-2 text-sm font-medium">Long Description</label>
+        <textarea name="longDesciption" rows="5" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
       </div>
 
-      <div class="mb-4">
-        <label class="block text-gray-700 mb-2">Admin Password</label>
-        <input type="password" name="adminPassword" required class="w-full border rounded px-3 py-2">
+      <!-- Admin Password -->
+      <div class="mb-6">
+        <label class="block text-gray-700 mb-2 text-sm font-medium">Admin Password</label>
+        <input type="password" name="adminPassword" required class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
       </div>
 
-      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+      <!-- Submit Button -->
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition duration-200">
         Add Course
       </button>
     </form>

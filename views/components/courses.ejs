@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Courses</title>
-  <script src="https://cdn.tailwindcss.com"></script>    
+  <script src="https://cdn.tailwindcss.com"></script> 
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body class="bg-gray-100 min-h-screen font-sans">
 
-  <section class="py-12 px-4">
+  <section class="py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-8">Our All Courses</h2>
+      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10">Our All Courses</h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <% courses.forEach(function(course) { %>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
             <!-- Image -->
-            <img src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" alt="<%= course.title %>" class="w-full h-48 object-cover">
+            <img 
+              src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
+              alt="<%= course.title %>" 
+              class="w-full h-48 object-cover sm:h-56"
+            >
 
             <!-- Content -->
-            <div class="p-6">
-              <h3 class="text-xl font-semibold mb-2"><%= course.title %></h3>
-              <p class="text-gray-700 mb-4"><%= course.shortDescription %></p>
-              <a href="/courses/<%= course._id %>" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            <div class="p-5 sm:p-6 flex-grow">
+              <h3 class="text-lg sm:text-xl font-semibold mb-2"><%= course.title %></h3>
+              <p class="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3"><%= course.shortDescription %></p>
+              <a href="/courses/<%= course._id %>" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm sm:text-base">
                 Read more
               </a>
             </div>
