@@ -1,32 +1,39 @@
 <header class="navbar">
-  <div class="logo">  <button>Gatimaan</button></div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav class="nav-links">
-    <a href="/">Home</a>
-    <a href="/layout/courses" class="highlight">Courses</a>
-    <a href="/layout/about">About</a>
-    <a href="/layout/contact">Contact</a>
-    <a href="/news" class="highlight">News &amp; Event</a>
-  </nav>
+  <div class="logo">  <button>GATIMAAN</button></div>
+  
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li class="available"><a href="/">Home</a></li>
+    <li><a href="/layout/about">About</a></li>
+    <li><a href="/layout/courses">Courses</a></li>
+    <li><a href="/layout/contact">Contact</a></li>
+    <li><a href="/news">News & Events</a></li>
+  </ul>
 </header>
 
 <script>
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-
-// Toggle menu on hamburger click
-hamburger.addEventListener('click', () => {
+function toggleMenu() {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  
+  hamburger.classList.toggle('active');
   navLinks.classList.toggle('active');
-});
+}
+</script>
 
-// Optional: Close menu when clicking outside
-document.addEventListener('click', function(event) {
-  const isClickInsideNav = navLinks.contains(event.target);
-  const isClickOnHamburger = hamburger.contains(event.target);
+<script>
+  const navItems = document.querySelectorAll('.nav-links li');
 
-  if (!isClickInsideNav && !isClickOnHamburger && navLinks.classList.contains('active')) {
-    navLinks.classList.remove('active');
-  }
-});
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navItems.forEach(i => i.classList.remove('available'));
+      item.classList.add('available');
+    });
+  });
 </script>
 
