@@ -7,6 +7,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const courseRoutes = require('./routes/courseRoutes');
 const newsRouter = require('./routes/newsRoutes');
+const contactRoutes = require('./routes/contact');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,6 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/courses', courseRoutes);
 app.use('/', newsRouter);
+app.use('/', contactRoutes);
+app.use('/',courseRoutes);
 app.use(cors());
 
 // Home route

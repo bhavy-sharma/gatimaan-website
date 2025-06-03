@@ -76,18 +76,36 @@ router.get('/', async (req, res) => {
 
 // ⚠️ This must come LAST
 // GET /courses/:id — View single course
-router.get('/:id', async (req, res) => {
-  try {
-    const course = await Course.findById(req.params.id);
-    if (!course) return res.status(404).send('Course not found');
+// router.get('/:id', async (req, res) => {
+//   try {
+//     const course = await Course.findById(req.params.id);
+//     if (!course) return res.status(404).send('Course not found');
 
-    res.send(`
-      <h1>${course.title}</h1>
-      <p>${course.longDesciption}</p>
-    `);
+//     res.send(`
+//       <h1>${course.title}</h1>
+//       <p>${course.longDesciption}</p>
+//     `);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send('Server Error');
+//   }
+// });
+
+// Route to show course by ID
+router.get('/courses/:id', async (req, res) => {
+  const courseId = req.params.id;
+
+  try {
+    const course = await Course.findById(courseId);
+
+    if (!course) {
+      return res.status(404).send('Course not found');
+    }
+
+    res.render('layout/courses-details', { course }); // Make sure you have 'course-details.ejs' view
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).send('Server error');
   }
 });
 
