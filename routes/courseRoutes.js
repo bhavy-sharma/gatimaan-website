@@ -81,10 +81,7 @@ router.get('/:id', async (req, res) => {
     const course = await Course.findById(req.params.id);
     if (!course) return res.status(404).send('Course not found');
 
-    res.send(`
-      <h1>${course.title}</h1>
-      <p>${course.longDesciption}</p>
-    `);
+    res.render('layout/course-view-page', { course, currentPath: req.path });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server Error');

@@ -1,0 +1,12 @@
+
+        <div class="course-container">
+            <h1><%= course.title %></h1>
+            <h1><%= course.shortDescription %></h1>
+            <p><%= course.longDesciption %></p>
+            <img 
+              src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
+              alt="<%= course.title %>" 
+              class="w-full h-48 object-cover sm:h-56"
+            >
+
+        </div>
