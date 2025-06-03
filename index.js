@@ -40,7 +40,8 @@ app.get('/', async (req, res) => {
       admitCards,
       admissions,
       results,
-      courses
+      courses,
+      currentPath: req.path
     });
 
   } catch (err) {
@@ -50,18 +51,18 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/layout/about' , (req, res) => {
-  res.render('layout/about');
+  res.render('layout/about', { currentPath: req.path });
 })
 
 app.get('/layout/contact' , (req, res) => {
-  res.render('layout/contact');
+  res.render('layout/contact', { currentPath: req.path });
 })
 
 app.get('/layout/courses', async (req, res, next) => {
   try {
     const Course = require('./models/courses.model');
     const courses = await Course.find();
-    res.render('layout/courses-page.ejs', { courses });
+    res.render('layout/courses-page.ejs', { courses, currentPath: req.path });
   } catch (err) {
     next(err);
   }

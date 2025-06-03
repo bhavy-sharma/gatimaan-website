@@ -4,9 +4,17 @@ const router = express.Router();
 const News = require('../models/News');
 require('dotenv').config();
 
+// Add this before your routes
+router.use((req, res, next) => {
+    res.locals.currentPath = req.path;
+    next();
+});
+
 router.get('/add-news', (req, res) => {
     try {
-        res.render('add-news');
+        res.render('add-news', {
+            currentPath: req.path
+        });
     } catch (err) {
         console.error(err);
         res.status(500).send("Server Error");
@@ -52,7 +60,8 @@ router.get('/news', async (req, res) => {
         const newsList = await News.find(query).sort({ createdAt: -1 });
         res.render('news', { 
             category: category,
-            newsList: newsList
+            newsList: newsList,
+            currentPath: req.path  // Add this line
         });
     } catch (err) {
         console.error(err);
