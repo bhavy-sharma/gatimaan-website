@@ -9,6 +9,8 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #f4f4f9;
   color: #333;
+  background-image: url('../../images/contact-bg.jpg');
+  background-size: contain;
 }
 
 .contact-container {
@@ -104,6 +106,9 @@ body {
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .left-column h2 {
