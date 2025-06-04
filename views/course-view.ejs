@@ -8,66 +8,47 @@
 </head>
 <body class="bg-gray-100 min-h-screen font-sans">
 
-  <section class="py-12 px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-2 gap-2">
+  <!-- Main Section -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-      <!-- Left Column -->
-      <div>
+      <!-- Left Column (Content) -->
+      <div class="space-y-6 order-2 lg:order-1">
 
-        <!-- Title of Course -->
-        <h1 class="text-3xl sm:text-4xl font-bold mb-6"><%= course.title %></h1>
+        <!-- Course Title -->
+        <h1 class="text-3xl sm:text-4xl font-bold"><%= course.title %></h1>
 
-        <!-- Description of Course -->
-        <div class="bg-white p-4 rounded shadow-md mb-6">
+        <!-- Description -->
+        <div class="bg-white p-5 rounded shadow-md">
           <h2 class="text-xl font-semibold mb-2">Description</h2>
           <p class="text-gray-700"><%= course.shortDescription %></p>
         </div>
 
-        <!-- Basic Description of Course -->
-        <div class="bg-white p-4 rounded shadow-md mb-6">
+        <!-- Basic Description -->
+        <div class="bg-white p-5 rounded shadow-md">
           <h2 class="text-xl font-semibold mb-2">Basic Description</h2>
           <p class="text-gray-700"><%= course.longDesciption %></p>
         </div>
 
         <!-- Admission Process -->
-        <div class="bg-white p-4 rounded shadow-md mb-6">
+        <div class="bg-white p-5 rounded shadow-md">
           <h2 class="text-xl font-semibold mb-2">Admission Process</h2>
           <p class="text-gray-700">Yaha addmission process ayaga</p>
         </div>
 
-        <!-- Subjects -->
-        <!-- <div class="bg-white p-4 rounded shadow-md">
-          <h2 class="text-xl font-semibold mb-2">Subjects of This Course</h2>
-          <ul class="list-disc pl-6">
-            <% if (course.subjects && course.subjects.length > 0) { %>
-              <% course.subjects.forEach(subject => { %>
-                <li><%= subject %></li>
-              <% }) %>
-            <% } else { %>
-              <li>No subjects listed for this course.</li>
-            <% } %>
-          </ul>
-        </div> -->
-      </div> 
+      </div>
 
-      <!-- Right Column -->
-      <div>
-
-        <!-- Image -->
-        <img 
-          src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
-          alt="<%= course.title %>" 
-          class="w-full h-64 object-cover rounded-lg shadow-md mb-6"
-        >
-
-        <!-- WhatsApp Button -->
-        <div class="bg-white p-4 rounded shadow-md">
-          <h2 class="text-xl font-semibold mb-2">WhatsApp Us</h2>
-          <a href="/#" target="_blank" class="block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-            Open WhatsApp
-          </a>
+      <!-- Right Column (Image) -->
+      <div class="order-1 lg:order-2 flex justify-center">
+        <div class="w-full max-w-md overflow-hidden rounded-lg shadow-md">
+          <img 
+            src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
+            alt="<%= course.title %>" 
+            class="w-full h-full object-cover"
+          >
         </div>
       </div>
+
     </div>
   </section>
 
