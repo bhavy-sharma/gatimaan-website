@@ -15,6 +15,7 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <!-- Custom Styles -->
+   <link rel="stylesheet" href="/css/scroll.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/carousel.css">
   <link rel="stylesheet" href="/css/course-card.css">
@@ -32,34 +33,34 @@
   <!-- 📰 News Section Start -->
   <section class="news-section py-5">
     <div class="container">
-      <h2 class="mb-5 text-center display-5 fw-bold text-primary">📰 Latest Updates</h2>
+      <h2 class="mb-5 text-center display-5 fw-bold text-primary des">📰 Latest Updates</h2>
 
       <div class="row g-4">
         <!-- Admit Card -->
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 des">
           <div class="news-card card h-100 shadow-sm border-0 d-flex flex-column">
             <div class="card-body bg-white rounded flex-grow-1 d-flex flex-column">
-              <h4 class="card-title text-success mb-3">🎫 Admit Card</h4>
-              <ul class="list-group list-group-flush flex-grow-1">
+              <h4 class="card-title text-success mb-3 des">🎫 Admit Card</h4>
+              <ul class="list-group list-group-flush flex-grow-1 des">
                 <% if (admitCards && admitCards.length > 0) { %>
                   <% admitCards.slice(0, 10).forEach(news => { %>
                     <li class="list-group-item">
-                      <a href="/news/Admit%20Card" class="text-decoration-none text-dark fw-medium"><%= news.title %></a>
+                      <a href="/news/Admit%20Card" class="text-decoration-none text-dark fw-medium des"><%= news.title %></a>
                     </li>
                   <% }) %>
                 <% } else { %>
-                  <li class="list-group-item text-muted">No updates yet.</li>
+                  <li class="list-group-item text-muted des">No updates yet.</li>
                 <% } %>
               </ul>
             </div>
-            <div class="card-footer bg-transparent border-0">
+            <div class="card-footer bg-transparent border-0 des">
               <a href="/news/Admit%20Card" class="btn btn-outline-success w-100">View More</a>
             </div>
           </div>
         </div>
 
         <!-- Admission -->
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 des">
           <div class="news-card card h-100 shadow-sm border-0 d-flex flex-column">
             <div class="card-body bg-white rounded flex-grow-1 d-flex flex-column">
               <h4 class="card-title text-primary mb-3">🏫 Admission</h4>
@@ -82,7 +83,7 @@
         </div>
 
         <!-- Result -->
-        <div class="col-md-6 col-lg-4">
+        <div class="col-md-6 col-lg-4 des">
           <div class="news-card card h-100 shadow-sm border-0 d-flex flex-column">
             <div class="card-body bg-white rounded flex-grow-1 d-flex flex-column">
               <h4 class="card-title text-danger mb-3">📢 Result</h4>
@@ -115,12 +116,12 @@
 <!-- 🎓 Courses Section Start -->
 <section class="courses-section py-5 bg-white">
   <div class="container">
-    <h2 class="text-center mb-5 display-5 fw-bold text-primary">🎓 Explore Our Courses</h2>
+    <h2 class="text-center mb-5 display-5 fw-bold text-primary des">🎓 Explore Our Courses</h2>
 
     <% if (courses && courses.length > 0) { %>
-      <div class="row g-4">
+      <div class="row g-4 des">
         <% courses.slice(0, 6).forEach(function(course, index) { %>
-          <div class="col-md-4 col-sm-6" data-aos="zoom-in" data-aos-delay="<%= index * 100 %>">
+          <div class="col-md-4 col-sm-6 des" data-aos="zoom-in" data-aos-delay="<%= index * 100 %>">
             <div class="card h-100 shadow-sm course-card border-0 overflow-hidden">
               <img src="<%= course.imageUrl || 'https://placehold.co/600x400' %>" class="card-img-top" alt="<%= course.title %>">
 
@@ -138,10 +139,10 @@
 
       <!-- Explore More Button -->
       <div class="text-center mt-5">
-        <a href="/courses" class="btn btn-lg btn-success">Explore More Courses</a>
+        <a href="/courses" class="btn btn-lg btn-success des">Explore More Courses</a>
       </div>
     <% } else { %>
-      <div class="alert alert-info text-center mt-4">
+      <div class="alert alert-info text-center mt-4 des">
         No courses available yet.
       </div>
     <% } %>
@@ -157,6 +158,7 @@
   <%- include("../components/Footer.ejs") %>
 
   <!-- Scripts -->
+   <script src="/js/scroll.js"></script>
   <script src="/js/carousel.js"></script>
   <script src="/js/feed.js"></script>
   <!-- AOS JS -->
