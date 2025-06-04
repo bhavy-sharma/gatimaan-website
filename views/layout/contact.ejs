@@ -58,7 +58,7 @@
                 </div>
                 <div class="right-column">
                     <h2>Get in Touch With Us!</h2>
-                    <form action="/contact" method="POST" class="contact-form">
+                    <form action="/contact" method="POST" class="contact-form" name="submit-to-google-sheet">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
@@ -73,14 +73,72 @@
                             <label for="message">Message:</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        
+                         <!-- Hidden input to indicate Sheet1 -->
+                         <input type="hidden" name="sheetType" value="Sheet1" />
                         <button type="submit">Send Message</button>
                     </form>
+                     </div>
+
+                    <div id="message" class="text-center"></div>
                 </div>
             </div>
         </div>
     </main>
 
     <%- include("../components/Footer.ejs") %>
+
+   <!-- Google Sheet Submission Script -->
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw2e9eHMi9kJTiqh_Wf2y7nLbzCo63vnegksBsQwjDuJETXAtwCABGEwzGRbZMk3iPD/exec';
+  const form = document.forms['submit-to-google-sheet'];
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const submitButton = form.querySelector("button");
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    const messageDiv = document.getElementById("message");
+    messageDiv.textContent = "Sending your message...";
+
+    const formData = new FormData(form);
+
+    // Get current date and time
+    const now = new Date();
+
+    const date = now.toISOString().split("T")[0]; // yyyy-mm-dd
+    const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+    // Append date and time to formData
+    formData.append("date", date);
+    formData.append("time", time);
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (response.ok) {
+          messageDiv.textContent = "Your message was sent successfully!";
+          form.reset();
+        } else {
+          throw new Error("Network response was not ok.");
+        }
+      })
+      .catch(error => {
+        console.error("Error!", error.message);
+        messageDiv.textContent = "There was an error submitting the form.";
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+        setTimeout(() => {
+          messageDiv.textContent = "";
+        }, 3000);
+      });
+  });
+</script>
+
 </body>
 </html>
