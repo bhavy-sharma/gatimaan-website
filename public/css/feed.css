@@ -1,0 +1,93 @@
+.page {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: white;
+  text-align: center;
+  margin:0;
+  backdrop-filter: blur(4px);
+}
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 40px 20px;
+ background: url("../images/download.jpeg") no-repeat fixed;
+  background-size: cover;
+}
+
+.page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(4px);
+  z-index: -1;
+}
+
+.page-wrapper h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #4CAF50;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease-in-out;
+}
+.page-wrapper h1:hover, .page-wrapper p:hover, .page-wrapper .item:hover{
+  transform: scale(1.1);
+}
+.page-wrapper p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #e0e0e0;
+  transition: transform 0.3s ease-in-out;
+}
+.page-wrapper .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px auto;
+ 
+}
+
+.page-wrapper .item {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  min-width: 200px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease-in-out;
+}
+.page-wrapper .item p {
+  margin: 10px 0;
+  font-size: 1.1em;
+  color: #ffffff;
+}
+
+.page-wrapper .number {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #4CAF50;
+  margin-top: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .page-wrapper .container {
+      flex-direction: column;
+      padding: 20px;
+  }
+  
+  .page-wrapper .item {
+      width: 100%;
+      max-width: 300px;
+  }
+}
