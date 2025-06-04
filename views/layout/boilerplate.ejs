@@ -177,22 +177,7 @@
    <script src="/js/scroll.js"></script>
   <script src="/js/carousel.js"></script>
   <script src="/js/feed.js"></script>
-  <script>
-    document.querySelectorAll('.course-card').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    const section = card.closest('.courses-section');
-    section.classList.add('blur');
-    card.classList.add('hovered');
-  });
-
-  card.addEventListener('mouseleave', () => {
-    const section = card.closest('.courses-section');
-    section.classList.remove('blur');
-    card.classList.remove('hovered');
-  });
-});
-
-  </script>
+  <script src="/js/blur.js"></script>
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script> 
   <script>
