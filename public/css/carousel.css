@@ -36,6 +36,7 @@ html, body {
   margin-top: 20px;
 }
 .carousel-container {
+  /* margin-top: 80px; */
   position: relative;
   width: 100%;
   overflow: hidden;
