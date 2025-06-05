@@ -18,6 +18,7 @@
    <link rel="stylesheet" href="/css/scroll.css">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/carousel.css">
+  <link rel="stylesheet" href="/css/news.css">
   <link rel="stylesheet" href="/css/course-card.css">
   <link rel="stylesheet" href="/css/testimonial.css">
   <link rel="stylesheet" href="/css/feed.css">
@@ -46,10 +47,13 @@
   <!-- Carousel -->
   <%- include("../components/carousel.ejs") %>
 
+  <!-- for background image  -->
+  <section style="background-image: url('/images/download.jpeg'); background-size: cover; background-position: center;">
+
   <!-- 📰 News Section Start -->
   <section class="news-section py-5">
     <div class="container">
-      <h2 class="mb-5 text-center display-5 fw-bold text-primary des">📰 Latest Updates</h2>
+      <h2 class="mb-5 text-center display-5 fw-bold text-success des">📰 Latest Updates</h2>
 
       <div class="row g-4">
         <!-- Admit Card -->
@@ -128,6 +132,8 @@
   <!-- 📝 feed section Start -->
   <%- include("../components/feed.ejs") %>
   <!-- 📝 feed Section End -->
+
+  </section>
 
 <!-- 🎓 Courses Section Start -->
 <section class="courses-section py-5 bg-white">

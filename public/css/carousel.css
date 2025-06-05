@@ -139,6 +139,9 @@ html, body {
 
 /* Responsive adjustments */
 @media (max-width: 764px) {
+  .carousel-container{
+    height: 28vh;
+  }
   .carousel-slide {
     background-size: contain;
     background-position: center top;
