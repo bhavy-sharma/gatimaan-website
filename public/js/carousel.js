@@ -38,12 +38,12 @@ function showSlide(index) {
 
   // Animate slices
   slices.forEach((slice, i) => {
-    slice.style.animation = `sliceFlyAway 4.2s ease forwards`;
+    slice.style.animation = `sliceFlyAway 2.2s ease forwards`;
     slice.style.animationDelay = `${i * 0.25}s`;
   });
 
   // Fade out the whole current slide smoothly after slices start flying
-  current.style.transition = 'opacity 3.5s ease-out';
+  current.style.transition = 'opacity 2.5s ease-out';
   current.style.opacity = '0';
 
   // After animation completes, cleanup
@@ -55,7 +55,7 @@ function showSlide(index) {
     current.style.transition = '';
     next.style.zIndex = '';
     currentSlide = index;
-  }, 5000);
+  }, 3000);
 }
 
 function nextSlide() {
