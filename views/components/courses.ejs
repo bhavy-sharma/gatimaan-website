@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Courses</title>
-  <script src="https://cdn.tailwindcss.com"></script> 
+  <script src="https://cdn.tailwindcss.com"></script>    
 </head>
 <body class="bg-gray-100 min-h-screen font-sans">
 
@@ -14,19 +14,23 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         <% courses.forEach(function(course) { %>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-            <!-- Image -->
-            <img 
-              src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
-              alt="<%= course.title %>" 
-              class="w-full h-48 object-cover sm:h-56"
-            >
+          <div 
+            class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full transform transition-all duration-500 hover:scale-105 hover:shadow-xl group"
+          >
+            <!-- Image with zoom effect -->
+            <div class="overflow-hidden">
+              <img 
+                src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
+                alt="<%= course.title %>" 
+                class="w-full h-48 sm:h-56 object-cover transform transition-transform duration-700 group-hover:scale-110"
+              >
+            </div>
 
             <!-- Content -->
             <div class="p-5 sm:p-6 flex-grow">
               <h3 class="text-lg sm:text-xl font-semibold mb-2"><%= course.title %></h3>
               <p class="text-gray-700 mb-4 text-sm sm:text-base line-clamp-3"><%= course.shortDescription %></p>
-              <a href="/courses/<%= course._id %>" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm sm:text-base">
+              <a href="/courses/<%= course._id %>" class="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition text-sm sm:text-base transform hover:-translate-y-0.5">
                 Read more
               </a>
             </div>
