@@ -6,11 +6,112 @@
 
 html, body {
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 
-.carousel-slide.active {
+.carousel-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Slide default state */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  z-index: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s ease;
+  overflow: visible; /* allow slices to overflow */
+  pointer-events: none; /* disable pointer events by default */
+}
+
+/* Slide when active */
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: auto; /* enable pointer events on active slide */
+}
+
+/* Slice styles */
+.carousel-slice {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 400% 100%;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.carousel-slice:nth-child(1) {
+  left: 0;
+  width: 25vw;
+  background-position: 0% 50%;
+}
+
+.carousel-slice:nth-child(2) {
+  left: 25vw;
+  width: 25vw;
+  background-position: 33.33% 50%;
+}
+
+.carousel-slice:nth-child(3) {
+  left: 50vw;
+  width: 25vw;
+  background-position: 66.66% 50%;
+}
+
+.carousel-slice:nth-child(4) {
+  left: 75vw;
+  width: 25vw;
+  background-position: 100% 50%;
+}
+
+/* Animation for slice flying away */
+@keyframes sliceFlyAway {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--dir-x) * 150%), calc(var(--dir-y) * 150%)) rotate(calc(var(--rot) * 360deg)) scale(0.4);
+  }
+}
+
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: clamp(24px, 5vw, 40px);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
 }
 
 .carousel-text {
@@ -25,7 +126,7 @@ html, body {
 }
 
 .carousel-text h2 {
-  font-size: clamp(24px, 5vw, 42px); /* Responsive font size */
+  font-size: clamp(24px, 5vw, 42px);
   margin: 0;
   line-height: 1.4;
   letter-spacing: 1px;
@@ -35,75 +136,22 @@ html, body {
   font-size: clamp(14px, 3vw, 20px);
   margin-top: 20px;
 }
-.carousel-container {
-  /* margin-top: 80px; */
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carousel-slide {
-  width: 100vw;
-  height: 100vh;
-  background-size: cover; /* Default for desktop */
-  background-position: center;
-  background-repeat: no-repeat;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-
-.carousel-slide.active {
-  display: flex;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  /* background: rgba(0, 0, 0, 0.6); */
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: clamp(24px, 5vw, 40px);
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 10;
-}
-
-/* .carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
-} */
-
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 764px) {
+  .carousel-slide {
+    background-size: contain;
+    background-position: center top;
+    height: 30vh;
+  }
+
   .carousel-btn {
     font-size: 28px;
     padding: 8px 16px;
   }
 }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@media (max-width: 764px) {
-  .carousel-slide {
-    background-size: contain;
-    background-position: center top; /* Adjust if needed */
-    background-repeat: no-repeat;
-    padding-top: 0; /* Avoid unwanted spacing */
-    height: 30vh;
-  }
 }
