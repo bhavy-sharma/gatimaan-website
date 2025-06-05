@@ -142,3 +142,15 @@ main {
   margin-top: 80px;
 }
 
+
+.CEO-img{
+  height: 250px;
+  position: relative;
+  top: -40px;
+}
+
+
+.CEO-title{
+  position: relative;
+  top: -30px;
+}
