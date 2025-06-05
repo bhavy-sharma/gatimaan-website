@@ -37,6 +37,58 @@
   opacity: 1;
   pointer-events: auto;
 }
+.slider-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    /* background-color: #003366; */
+  }
+
+  .slider-track {
+    display: flex;
+    width: max-content;
+    animation: scrollSlides 30s linear infinite;
+  }
+
+  /* .slide {
+    min-width: 180px;
+    height: 120px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* background-color: #003366; 
+}*/
+  .slide {
+      flex: 0 0 240px;
+      height: 160px;
+      margin-right: 20px;
+      background-color: #003366;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+  .slide:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    
+  }
+
+  @keyframes scrollSlides {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Pause on hover */
+  .slider-container:hover .slider-track {
+    animation-play-state: paused;
+  }
 
   </style>
 </head>
@@ -84,6 +136,61 @@
   </div>
 </section>
 <!-- 🎓 Courses Section End -->
+
+
+<!-- Smooth Auto Slider Section -->
+<section class="auto-slider-section py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4 display-6 fw-bold text-primary des">📌 Quick Links</h2>
+    <div class="slider-container position-relative">
+      <div class="slider-track d-flex" id="sliderTrack">
+        <!-- Slide Item -->
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.com/50/cf3e4c?text=$" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Online Fee Payment</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/3e4ccf?text=B" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">List of Colleges</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/3ecf67?text=P" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Teacher Registration</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/cf3e9a?text=E" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Syllabus</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/3ecf9a?text=F" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Exam Schedule</p>
+        </div>
+
+        <!-- Duplicate Slides for Infinite Loop -->
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.com/50/cf3e4c?text=$" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Online Fee Payment</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/3e4ccf?text=B" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">List of Colleges</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/3ecf67?text=P" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Teacher Registration</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/cf3e9a?text=E" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Syllabus</p>
+        </div>
+        <div class="slide me-3 p-3 rounded shadow-sm bg-blue d-flex flex-column align-items-center justify-content-center">
+          <img src="https://via.placeholder.co/50/3ecf9a?text=F" alt="Icon" class="mb-2">
+          <p class="m-0 text-center fs-6">Exam Schedule</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- for background image  -->
   <section style="background-image: url('/images/download.jpeg'); background-size: cover; background-position: center;">
