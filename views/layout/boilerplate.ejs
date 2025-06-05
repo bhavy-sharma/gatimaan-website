@@ -47,6 +47,44 @@
   <!-- Carousel -->
   <%- include("../components/carousel.ejs") %>
 
+  
+<!-- 🎓 Courses Section Start -->
+<section class="courses-section py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-5 display-5 fw-bold text-primary des">🎓 Explore Our Courses</h2>
+
+    <% if (courses && courses.length > 0) { %>
+      <div class="row g-4 des">
+        <% courses.slice(0, 6).forEach(function(course, index) { %>
+          <div class="col-md-4 col-sm-6 des" data-aos="zoom-in" data-aos-delay="<%= index * 100 %>">
+            <div class="card h-100 shadow-sm course-card border-0 overflow-hidden">
+              <img src="<%= course.imageUrl || 'https://placehold.co/600x400' %>" class="card-img-top" alt="<%= course.title %>">
+
+              <div class="card-body d-flex flex-column text-center tracking-tighter">
+                <h5 class="card-title"><%= course.title %></h5>
+                <p class="card-text flex-grow-1"><%= course.shortDescription %></p>
+                <a href="/courses/<%= course._id %>" class="btn btn-outline-primary mt-auto w-100">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Explore More Button -->
+      <div class="text-center mt-5">
+        <a href="/courses" class="btn btn-lg btn-success des">Explore More Courses</a>
+      </div>
+    <% } else { %>
+      <div class="alert alert-info text-center mt-4 des">
+        No courses available yet.
+      </div>
+    <% } %>
+  </div>
+</section>
+<!-- 🎓 Courses Section End -->
+
   <!-- for background image  -->
   <section style="background-image: url('/images/download.jpeg'); background-size: cover; background-position: center;">
 
@@ -134,43 +172,6 @@
   <!-- 📝 feed Section End -->
 
   </section>
-
-<!-- 🎓 Courses Section Start -->
-<section class="courses-section py-5 bg-white">
-  <div class="container">
-    <h2 class="text-center mb-5 display-5 fw-bold text-primary des">🎓 Explore Our Courses</h2>
-
-    <% if (courses && courses.length > 0) { %>
-      <div class="row g-4 des">
-        <% courses.slice(0, 6).forEach(function(course, index) { %>
-          <div class="col-md-4 col-sm-6 des" data-aos="zoom-in" data-aos-delay="<%= index * 100 %>">
-            <div class="card h-100 shadow-sm course-card border-0 overflow-hidden">
-              <img src="<%= course.imageUrl || 'https://placehold.co/600x400' %>" class="card-img-top" alt="<%= course.title %>">
-
-              <div class="card-body d-flex flex-column text-center tracking-tighter">
-                <h5 class="card-title"><%= course.title %></h5>
-                <p class="card-text flex-grow-1"><%= course.shortDescription %></p>
-                <a href="/courses/<%= course._id %>" class="btn btn-outline-primary mt-auto w-100">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-        <% }) %>
-      </div>
-
-      <!-- Explore More Button -->
-      <div class="text-center mt-5">
-        <a href="/courses" class="btn btn-lg btn-success des">Explore More Courses</a>
-      </div>
-    <% } else { %>
-      <div class="alert alert-info text-center mt-4 des">
-        No courses available yet.
-      </div>
-    <% } %>
-  </div>
-</section>
-<!-- 🎓 Courses Section End -->
 
   <!-- 📝 Testimonial Section Start -->
   <%- include("../components/testimonial.ejs") %>
