@@ -1,0 +1,90 @@
+
+   body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: auto; /* Allow content to set the height */
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    min-height: 100vh;
+    height: auto; /* Remove fixed 7125px to avoid unnecessary white space */
+  }
+}
+
+@media screen and (min-width: 601px) {
+  body {
+    height: auto; /* Let the content define the height */
+  }
+}
+
+
+    /* Blur everything inside the container except the hovered card */
+    .courses-section.blur .course-card {
+      filter: blur(5px);
+      opacity: 0.5;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+      pointer-events: none;
+      /* prevent clicking on blurred cards */
+    }
+
+    .courses-section.blur .course-card.hovered {
+      filter: none;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .slider-container {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      /* background-color: #003366; */
+    }
+
+    .slider-track {
+      display: flex;
+      width: max-content;
+      animation: scrollSlides 30s linear infinite;
+    }
+
+    /* .slide {
+    min-width: 180px;
+    height: 120px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* background-color: #003366; 
+}*/
+    .slide {
+      flex: 0 0 240px;
+      height: 160px;
+      margin-right: 20px;
+      background-color: #003366;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+    .slide:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    }
+
+    @keyframes scrollSlides {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Pause on hover */
+    .slider-container:hover .slider-track {
+      animation-play-state: paused;
+    }
