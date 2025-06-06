@@ -146,11 +146,16 @@ main {
 .CEO-img{
   height: 250px;
   position: relative;
-  top: -40px;
+  /* top: -40px; */
 }
 
 
 .CEO-title{
   position: relative;
-  top: -30px;
+  top: 10px;
+}
+
+.author-title{
+  position: relative;
+  top: 30px;
 }
