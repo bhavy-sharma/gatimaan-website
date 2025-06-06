@@ -26,6 +26,29 @@
   <link rel="stylesheet" href="/css/horizontal_scroll.css">
   <link rel="stylesheet" href="/css/testimonial.css">
   <link rel="stylesheet" href="/css/footer.css">
+
+
+  <style>
+      body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: auto;
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    min-height: 100vh;
+    height: auto; 
+  }
+}
+
+@media screen and (min-width: 601px) {
+  body {
+    height: auto; 
+  }
+}
+  </style>
 </head>
 
 <body>
@@ -188,6 +211,10 @@
       <%- include("../components/testimonial.ejs") %>
         <!-- 📝 Testimonial Section End -->
 
+        
+        <!-- Whatsapp -->
+        <%- include("../components/whatsappIcon.ejs") %>
+          <!--Whatsapp End-->
 
         <!-- Footer -->
         <%- include("../components/Footer.ejs") %>
