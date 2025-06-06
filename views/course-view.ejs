@@ -2,55 +2,331 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= course.title %> - Details</title>
-  <script src="https://cdn.tailwindcss.com"></script>    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= course.title %> - Course Details</title>
+  <script src="https://cdn.tailwindcss.com"></script> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    .course-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+    }
+    .highlight-box {
+      position: relative;
+    }
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+      border-radius: 4px;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 min-h-screen font-sans">
+<body class="text-gray-800">
 
-  <!-- Main Section -->
-  <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-      <!-- Left Column (Content) -->
-      <div class="space-y-6 order-2 lg:order-1">
-
-        <!-- Course Title -->
-        <h1 class="text-3xl sm:text-4xl font-bold"><%= course.title %></h1>
-
-        <!-- Description -->
-        <div class="bg-white p-5 rounded shadow-md">
-          <h2 class="text-xl font-semibold mb-2">Description</h2>
-          <p class="text-gray-700"><%= course.shortDescription %></p>
-        </div>
-
-        <!-- Basic Description -->
-        <div class="bg-white p-5 rounded shadow-md">
-          <h2 class="text-xl font-semibold mb-2">Basic Description</h2>
-          <p class="text-gray-700"><%= course.longDesciption %></p>
-        </div>
-
-        <!-- Admission Process -->
-        <div class="bg-white p-5 rounded shadow-md">
-          <h2 class="text-xl font-semibold mb-2">Admission Process</h2>
-          <p class="text-gray-700">Yaha addmission process ayaga</p>
-        </div>
-
+  <!-- Header with gradient background -->
+  <header class="gradient-bg py-12 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-block px-4 py-1 bg-white rounded-full shadow-sm mb-4">
+        <span class="text-sm font-medium text-indigo-600"><%= course.category || 'Professional Course' %></span>
       </div>
-
-      <!-- Right Column (Image) -->
-      <div class="order-1 lg:order-2 flex justify-center">
-        <div class="w-full max-w-md overflow-hidden rounded-lg shadow-md">
-          <img 
-            src="<%= course.imageUrl || 'https://placehold.co/600x400'  %>" 
-            alt="<%= course.title %>" 
-            class="w-full h-full object-cover"
-          >
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"><%= course.title %></h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto"><%= course.tagline || 'Transform your skills and accelerate your career' %></p>
+      
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+          <i class="fas fa-star text-yellow-400 mr-2"></i>
+          <span class="font-medium"><%= course.rating || '4.8' %> Rating</span>
+        </div>
+        <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+          <i class="fas fa-users text-indigo-500 mr-2"></i>
+          <span class="font-medium"><%= course.students || '1,200+' %> Students</span>
+        </div>
+        <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+          <i class="fas fa-certificate text-emerald-500 mr-2"></i>
+          <span class="font-medium"><%= course.certificate ? 'Certificate' : 'No Certificate' %></span>
         </div>
       </div>
+    </div>
+  </header>
 
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- Left Column - Course Details -->
+    <div class="lg:col-span-2 space-y-8">
+
+      <!-- Course Highlights -->
+      <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">Course Highlights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start">
+            <div class="bg-indigo-50 p-2 rounded-lg mr-3">
+              <i class="fas fa-play-circle text-indigo-600 text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Engaging Content</h3>
+              <p class="text-gray-600 text-sm"><%= course.hours || '30+' %> hours of video lessons</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="bg-indigo-50 p-2 rounded-lg mr-3">
+              <i class="fas fa-tasks text-indigo-600 text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Hands-on Practice</h3>
+              <p class="text-gray-600 text-sm"><%= course.projects || '5+' %> real-world projects</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="bg-indigo-50 p-2 rounded-lg mr-3">
+              <i class="fas fa-question-circle text-indigo-600 text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Support</h3>
+              <p class="text-gray-600 text-sm">Q&A with instructors</p>
+            </div>
+          </div>
+          <div class="flex items-start">
+            <div class="bg-indigo-50 p-2 rounded-lg mr-3">
+              <i class="fas fa-infinity text-indigo-600 text-lg"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-800">Lifetime Access</h3>
+              <p class="text-gray-600 text-sm">Learn at your own pace</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Description -->
+      <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">About This Course</h2>
+        <div class="highlight-box pl-6">
+          <p class="text-gray-700 leading-relaxed"><%= course.shortDescription %></p>
+        </div>
+      </section>
+
+      <!-- What You'll Learn -->
+      <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">What You'll Learn</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <% const learnPoints = course.learnPoints || [
+            'Master key concepts and techniques',
+            'Build practical, real-world applications',
+            'Develop problem-solving skills',
+            'Gain industry-relevant knowledge',
+            'Work with modern tools and technologies',
+            'Prepare for certifications or job interviews'
+          ]; %>
+          <% learnPoints.forEach(point => { %>
+            <div class="flex items-start">
+              <div class="mt-1 mr-2 text-indigo-500">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <span class="text-gray-700"><%= point %></span>
+            </div>
+          <% }); %>
+        </div>
+      </section>
+
+      <!-- Curriculum -->
+      <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">Course Curriculum</h2>
+        <div class="space-y-4">
+          <% const modules = course.modules || [
+            { title: 'Introduction', lessons: 3, duration: '45 min' },
+            { title: 'Fundamentals', lessons: 5, duration: '2.5 hours' },
+            { title: 'Core Concepts', lessons: 8, duration: '4 hours' },
+            { title: 'Advanced Topics', lessons: 6, duration: '3.5 hours' },
+            { title: 'Real-world Projects', lessons: 4, duration: '5 hours' }
+          ]; %>
+          <% modules.forEach((module, index) => { %>
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+              <div class="bg-gray-50 px-4 py-3 flex justify-between items-center cursor-pointer">
+                <div>
+                  <h3 class="font-medium text-gray-800">Module <%= index + 1 %>: <%= module.title %></h3>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                  <span class="mr-4"><%= module.lessons %> lessons</span>
+                  <span><%= module.duration %></span>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Right Column - Enrollment Card -->
+    <div class="space-y-6">
+      <!-- Course Image -->
+      <div class="bg-white rounded-xl overflow-hidden shadow-md course-card border border-gray-100">
+        <img 
+          src="<%= course.imageUrl || 'https://placehold.co/600x400' %>" 
+          alt="<%= course.title %>" 
+          class="w-full h-48 object-cover"
+        >
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <% if (course.price && course.originalPrice) { %>
+                <span class="text-3xl font-bold text-gray-900">₹<%= course.price %></span>
+                <span class="ml-2 text-lg text-gray-500 line-through">₹<%= course.originalPrice %></span>
+                <span class="ml-2 bg-red-100 text-red-800 text-xs font-semibold px-2 py-1 rounded">
+                  <%= Math.round((1 - course.price/course.originalPrice)*100) %>% OFF
+                </span>
+              <% } else { %>
+                <span class="text-3xl font-bold text-gray-900"><%= course.price ? `₹${course.price}` : 'FREE' %></span>
+              <% } %>
+            </div>
+          </div>
+          
+          <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 mb-4">
+            Enroll Now
+          </button>
+          
+          <div class="text-center text-sm text-gray-500 mb-4">
+            <span>30-Day Money-Back Guarantee</span>
+          </div>
+          
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center">
+              <i class="fas fa-video text-gray-400 mr-3 w-5"></i>
+              <span><%= course.hours || '30+' %> hours on-demand video</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-file-alt text-gray-400 mr-3 w-5"></i>
+              <span><%= course.resources || '15+' %> downloadable resources</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-mobile-alt text-gray-400 mr-3 w-5"></i>
+              <span>Access on mobile and TV</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-certificate text-gray-400 mr-3 w-5"></i>
+              <span><%= course.certificate ? 'Certificate of completion' : 'No certificate' %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Instructor Card -->
+      <div class="bg-white rounded-xl p-6 course-card border border-gray-100">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Instructor</h3>
+        <div class="flex items-start">
+          <img src="<%= course.instructorImage || 'https://placehold.co/80x80' %>" 
+               alt="<%= course.instructorName || 'Instructor' %>" 
+               class="w-12 h-12 rounded-full object-cover mr-4">
+          <div>
+            <h4 class="font-medium text-gray-900"><%= course.instructorName || 'John Doe' %></h4>
+            <p class="text-sm text-gray-600 mb-2"><%= course.instructorTitle || 'Senior Developer & Educator' %></p>
+            <div class="flex items-center text-sm text-gray-500">
+              <i class="fas fa-star text-yellow-400 mr-1"></i>
+              <span class="mr-3">4.8</span>
+              <i class="fas fa-users text-gray-400 mr-1"></i>
+              <span>12,345 students</span>
+            </div>
+          </div>
+        </div>
+        <p class="mt-4 text-gray-600 text-sm"><%= course.instructorBio || 'With over 10 years of industry experience and 5 years of teaching, I love helping students bridge the gap between theory and practice.' %></p>
+      </div>
+      
+      <!-- Testimonial -->
+      <div class="bg-white rounded-xl p-6 course-card border border-gray-100">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Student Feedback</h3>
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <img src="https://placehold.co/40x40" alt="Student" class="w-10 h-10 rounded-full mr-3">
+            <div>
+              <div class="flex items-center mb-1">
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <p class="text-gray-700 text-sm">"This course completely transformed my understanding of the subject. The projects were especially valuable for my portfolio."</p>
+              <p class="text-gray-500 text-xs mt-1">- Rahul Sharma</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FAQ Section -->
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about the course</p>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <% const faqs = course.faqs || [
+        { question: "Do I need any prior experience?", answer: "No, this course is designed for beginners but also covers advanced topics." },
+        { question: "How long do I have access to the course?", answer: "You'll have lifetime access to all course materials." },
+        { question: "Can I get a refund if I'm not satisfied?", answer: "Yes, we offer a 30-day money-back guarantee with no questions asked." },
+        { question: "Will I receive a certificate after completion?", answer: "Yes, you'll receive a verifiable certificate upon completing all course requirements." }
+      ]; %>
+      <% faqs.forEach((faq, index) => { %>
+        <div class="border-b border-gray-100 last:border-b-0">
+          <div class="flex justify-between items-center p-6 cursor-pointer">
+            <h3 class="font-medium text-gray-800"><%= faq.question %></h3>
+            <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+          </div>
+          <div class="px-6 pb-6 pt-2 hidden">
+            <p class="text-gray-600"><%= faq.answer %></p>
+          </div>
+        </div>
+      <% }); %>
     </div>
   </section>
 
+  <!-- Call to Action -->
+  <section class="bg-indigo-700 text-white py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Ready to start your learning journey?</h2>
+      <p class="text-xl text-indigo-100 mb-8">Join <%= course.students || '1,200+' %> students who have already transformed their skills</p>
+      <button class="bg-white text-indigo-700 hover:bg-gray-100 font-medium py-3 px-8 rounded-lg transition duration-200 inline-flex items-center">
+        Enroll Now <i class="fas fa-arrow-right ml-2"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- WhatsApp Button -->
+  <%- include("./components/whatsappIcon.ejs") %>
+
+  <script>
+    // Simple FAQ toggle functionality
+    document.querySelectorAll('.faqs div:nth-child(odd)').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        answer.classList.toggle('hidden');
+        const icon = item.querySelector('i');
+        icon.classList.toggle('transform');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+  </script>
 </body>
 </html>
