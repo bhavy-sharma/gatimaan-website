@@ -27,14 +27,26 @@
   <link rel="stylesheet" href="/css/footer.css">
   
   <style>
-    body{
-      height: 4169px;
-    }
-    @media screen and (max-width: 600px) {
-      body{
-        height: 6875px;
-      }
+   body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: auto; /* Allow content to set the height */
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    min-height: 100vh;
+    height: auto; /* Remove fixed 7125px to avoid unnecessary white space */
   }
+}
+
+@media screen and (min-width: 601px) {
+  body {
+    height: auto; /* Let the content define the height */
+  }
+}
+
 
     /* Blur everything inside the container except the hovered card */
     .courses-section.blur .course-card {
