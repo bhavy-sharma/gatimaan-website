@@ -1,5 +1,32 @@
-.icon-img {
+.auto-slider-section{
+  background-color: #083880;
+}
+/* .d-flex{
+  justify-content: space-between !important;
+} */
+.slide{
+  box-shadow: none;
+}
+/* .icon-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+} */
+.icon-box {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px; 
+}
+
+.icon-img {
+  max-height: 100%;
+  width: auto;
+  display: block;
+}
+
+.slide p {
+  font-size: 1rem; 
+  text-align: center;
 }
