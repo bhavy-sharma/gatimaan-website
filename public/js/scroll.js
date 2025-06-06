@@ -18,7 +18,8 @@
     // On page reload
 
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
-  });
+  if (window.location.pathname !== '/') return; // Only on homepage
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 100);
+});

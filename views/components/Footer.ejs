@@ -1,10 +1,11 @@
 <footer class="footer">
   <div class="footer-content">
-    
+
     <!-- About Section -->
     <div class="footer-box footer-about des">
       <h3 class="footer-txt">About Gatimaan</h3>
-      <p>Empowering students and professionals with expert guidance, personalized counseling, and industry insights to make confident, informed career choices.</p>
+      <p>Empowering students and professionals with expert guidance, personalized counseling, and industry insights to
+        make confident, informed career choices.</p>
 
       <!-- Social Media Icons -->
       <div class="social-icons" style="display: flex;">
@@ -40,32 +41,37 @@
   <!-- Bottom Footer -->
   <div class="footer-bottom des">
     <p>&copy; <%= new Date().getFullYear() %> All Rights Reserved by Gatimaan</p>
-    <b><p>Made with ❤️ by <strong>Navokta</strong></p> </b>
+    <b>
+      <p>Made with ❤️ by <strong>Navokta</strong></p>
+    </b>
   </div>
   <!-- Back to Top Button -->
-<button onclick="scrollToTop()" id="topBtn" title="Go to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</button>
+  <button onclick="scrollToTop()" id="topBtn" title="Go to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 </footer>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const topBtn = document.getElementById("topBtn");
+
+ window.onscroll = function () {
+  console.log("Scrolling..."); // Add this line
   const topBtn = document.getElementById("topBtn");
-
-  // Show the button after scrolling down 300px
-  window.onscroll = function () {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      topBtn.style.display = "block";
-    } else {
-      topBtn.style.display = "none";
-    }
-  };
-
-  // Scroll to top smoothly
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
   }
+};
 
+
+
+    window.scrollToTop = function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    };
+  });
 </script>
