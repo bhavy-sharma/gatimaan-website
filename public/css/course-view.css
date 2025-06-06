@@ -1,8 +1,29 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-.course-container{
-    height: 100vh;
-    width: 100%;
-}
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    .course-card {
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
+    }
+    .highlight-box {
+      position: relative;
+    }
+    .highlight-box::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: linear-gradient(to bottom, #4f46e5, #7c3aed);
+      border-radius: 4px;
+    }
