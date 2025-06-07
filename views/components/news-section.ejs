@@ -1,0 +1,36 @@
+<section class="news-section py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center display-5 fw-bold text-success">📰 News and Updates</h2>
+
+    <div class="table-responsive shadow rounded">
+      <table class="table table-hover table-bordered align-middle text-center mb-0">
+        <thead class="table-success">
+          <tr class="text-uppercase">
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (newsList && newsList.length > 0) { %>
+            <% newsList.forEach(news => { %>
+              <tr>
+                <td class="fw-semibold"><%= new Date(news.createdAt).toLocaleDateString('en-IN') %></td>
+                <td class="text-center"><%= news.description %></td>
+                <td>
+                  <a href="<%= news.newsLink %>" target="_blank" class="btn btn-sm btn-outline-success px-3 py-1 rounded-pill">
+                    View <%= news.category %>
+                  </a>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="3" class="text-muted py-4">No news updates available.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -22,6 +22,6 @@ const NewsSchema = new mongoose.Schema({
         enum: ['Admit Card', 'Admission', 'Result'],
         required: true
     }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('News', NewsSchema);

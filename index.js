@@ -7,6 +7,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const courseRoutes = require('./routes/courseRoutes');
 const newsRouter = require('./routes/newsRoutes');
+const News = require('./models/News');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,11 +30,12 @@ app.get('/', async (req, res) => {
     const News = require('./models/News');
     const Course = require('./models/courses.model');
 
-    const [admitCards, admissions, results, courses] = await Promise.all([
+    const [admitCards, admissions, results, courses, newsList] = await Promise.all([
       News.find({ category: 'Admit Card' }).limit(5),
       News.find({ category: 'Admission' }).limit(5),
       News.find({ category: 'Result' }).limit(5),
-      Course.find()
+      Course.find(),
+      News.find().sort({ _id: -1 }) 
     ]);
 
     res.render('layout/boilerplate', {
@@ -41,6 +43,7 @@ app.get('/', async (req, res) => {
       admissions,
       results,
       courses,
+      newsList,
       currentPath: req.path
     });
 
@@ -49,6 +52,7 @@ app.get('/', async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
 
 app.get('/layout/about' , (req, res) => {
   res.render('layout/about', { currentPath: req.path });
@@ -75,9 +79,17 @@ app.get('/layout/courses', async (req, res, next) => {
   }
 });
 
-app.get('/news' , (req, res) => {
-  res.render('news');
+
+
+app.get('/news', async (req, res) => {
+  try {
+    const newsList = await News.find().sort({ _id: -1 }); 
+    res.render('news', { newsList }); 
+  } catch (error) {
+    res.status(500).send('Server Error');
+  }
 });
+
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
