@@ -187,14 +187,14 @@
       
       <!-- Instructor Card -->
       <div class="bg-white rounded-xl p-6 course-card border border-gray-100">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Instructor</h3>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">About the Consulatant</h3>
         <div class="flex items-start">
-          <img src="<%= course.instructorImage || 'https://placehold.co/80x80' %>" 
+          <img src="/images/CEO image-modified.png" 
                alt="<%= course.instructorName || 'Instructor' %>" 
                class="w-12 h-12 rounded-full object-cover mr-4">
           <div>
-            <h4 class="font-medium text-gray-900"><%= course.instructorName || 'John Doe' %></h4>
-            <p class="text-sm text-gray-600 mb-2"><%= course.instructorTitle || 'Senior Developer & Educator' %></p>
+            <h4 class="font-medium text-gray-900">Dr. Bhrat Bhushan Sharma</h4>
+            <p class="text-sm text-gray-600 mb-2">Teaching Experience of 8+ Years</p>
             <div class="flex items-center text-sm text-gray-500">
               <i class="fas fa-star text-yellow-400 mr-1"></i>
               <span class="mr-3">4.8</span>
@@ -203,30 +203,7 @@
             </div>
           </div>
         </div>
-        <p class="mt-4 text-gray-600 text-sm"><%= course.instructorBio || 'With over 10 years of industry experience and 5 years of teaching, I love helping students bridge the gap between theory and practice.' %></p>
-      </div>
-      
-      <!-- Testimonial -->
-      <div class="bg-white rounded-xl p-6 course-card border border-gray-100">
-        <h3 class="text-lg font-semibold text-gray-900 mb-4">Student Feedback</h3>
-        <div class="space-y-4">
-          <div class="flex items-start">
-            <img src="https://placehold.co/40x40" alt="Student" class="w-10 h-10 rounded-full mr-3">
-            <div>
-              <div class="flex items-center mb-1">
-                <div class="flex text-yellow-400">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </div>
-              </div>
-              <p class="text-gray-700 text-sm">"This course completely transformed my understanding of the subject. The projects were especially valuable for my portfolio."</p>
-              <p class="text-gray-500 text-xs mt-1">- Rahul Sharma</p>
-            </div>
-          </div>
-        </div>
+        <p class="mt-4 text-gray-600 text-sm">Dr. Bharat Bhushan Sharma, a UGC NET qualified scholar with a Ph.D. in Foreign Trade, brings deep expertise in business, marketing, and economics. With degrees in MBA, M.Com, MA Economics, and Yogic Sciences, he blends commerce with holistic education, inspiring lifelong learning.</p>
       </div>
     </div>
   </main>
@@ -256,17 +233,6 @@
           </div>
         </div>
       <% }); %>
-    </div>
-  </section>
-
-  <!-- Call to Action -->
-  <section class="bg-indigo-700 text-white py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">Ready to start your learning journey?</h2>
-      <p class="text-xl text-indigo-100 mb-8">Join <%= course.students || '1,200+' %> students who have already transformed their skills</p>
-      <button class="bg-white text-indigo-700 hover:bg-gray-100 font-medium py-3 px-8 rounded-lg transition duration-200 inline-flex items-center">
-        Enroll Now <i class="fas fa-arrow-right ml-2"></i>
-      </button>
     </div>
   </section>
 
