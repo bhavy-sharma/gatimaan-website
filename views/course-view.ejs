@@ -1,41 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title><%= course.title %> - Course Details</title>
-  <link rel="stylesheet" href="/css/course-view.css">
-  <script src="https://cdn.tailwindcss.com"></script> 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/course-view.css">
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="text-gray-800">
 
   <!-- Header with gradient background -->
-  <header class="gradient-bg py-12 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-block px-4 py-1 bg-white rounded-full shadow-sm mb-4">
-        <span class="text-sm font-medium text-indigo-600"><%= course.category || 'Professional Course' %></span>
+<%
+  const minRating = 3.9;
+  const maxRating = 5.0;
+  const minStudents = 500;
+  const maxStudents = 1500;
+
+  const randomRating = (Math.random() * (maxRating - minRating) + minRating).toFixed(1);
+  const randomStudents = Math.floor(Math.random() * (maxStudents - minStudents + 1) + minStudents);
+%>
+
+<header class="gradient-bg py-12 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
+  <div class="max-w-5xl mx-auto text-center">
+    <div class="inline-block px-4 py-1 bg-white rounded-full shadow-sm mb-4">
+      <span class="text-sm font-medium text-indigo-600"><%= course.category || 'Professional Course' %></span>
+    </div>
+
+    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"><%= course.title %></h1>
+    
+    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      <%= course.tagline || 'Transform your skills and accelerate your career' %>
+    </p>
+
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+        <i class="fas fa-star text-yellow-400 mr-2"></i>
+        <span class="font-medium"><%= course.rating || randomRating %> Rating</span>
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight"><%= course.title %></h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto"><%= course.tagline || 'Transform your skills and accelerate your career' %></p>
-      
-      <div class="mt-8 flex flex-wrap justify-center gap-4">
-        <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
-          <i class="fas fa-star text-yellow-400 mr-2"></i>
-          <span class="font-medium"><%= course.rating || '4.8' %> Rating</span>
-        </div>
-        <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
-          <i class="fas fa-users text-indigo-500 mr-2"></i>
-          <span class="font-medium"><%= course.students || '1,200+' %> Students</span>
-        </div>
-        <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
-          <i class="fas fa-certificate text-emerald-500 mr-2"></i>
-          <span class="font-medium"><%= course.certificate ? 'Certificate' : 'No Certificate' %></span>
-        </div>
+      <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+        <i class="fas fa-users text-indigo-500 mr-2"></i>
+        <span class="font-medium"><%= course.students || randomStudents %> Students</span>
+      </div>
+      <div class="flex items-center bg-white px-4 py-2 rounded-lg shadow-sm">
+        <i class="fas fa-certificate text-emerald-500 mr-2"></i>
+        <span class="font-medium"><%= course.certificate ? 'Certificate' : 'No Certificate' %></span>
       </div>
     </div>
-  </header>
+  </div>
+</header>
+
 
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -45,15 +59,15 @@
 
       <!-- Course Highlights -->
       <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">Course Highlights</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-100">Consultancy Highlights</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="flex items-start">
             <div class="bg-indigo-50 p-2 rounded-lg mr-3">
               <i class="fas fa-play-circle text-indigo-600 text-lg"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-800">Engaging Content</h3>
-              <p class="text-gray-600 text-sm"><%= course.hours || '30+' %> hours of video lessons</p>
+              <h3 class="font-semibold text-gray-800">Expert Guidance</h3>
+              <p class="text-gray-600 text-sm">Personalized consulting by experienced professionals</p>
             </div>
           </div>
           <div class="flex items-start">
@@ -61,8 +75,8 @@
               <i class="fas fa-tasks text-indigo-600 text-lg"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-800">Hands-on Practice</h3>
-              <p class="text-gray-600 text-sm"><%= course.projects || '5+' %> real-world projects</p>
+              <h3 class="font-semibold text-gray-800">Strategic Planning</h3>
+              <p class="text-gray-600 text-sm">Tailored business solutions to drive growth</p>
             </div>
           </div>
           <div class="flex items-start">
@@ -70,8 +84,9 @@
               <i class="fas fa-question-circle text-indigo-600 text-lg"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-800">Support</h3>
-              <p class="text-gray-600 text-sm">Q&A with instructors</p>
+              <h3 class="font-semibold text-gray-800">Timely Support</h3>
+              <p class="text-gray-600 text-sm">Fast responses and continuous assistance whenever you need
+</p>
             </div>
           </div>
           <div class="flex items-start">
@@ -79,8 +94,9 @@
               <i class="fas fa-infinity text-indigo-600 text-lg"></i>
             </div>
             <div>
-              <h3 class="font-semibold text-gray-800">Lifetime Access</h3>
-              <p class="text-gray-600 text-sm">Learn at your own pace</p>
+              <h3 class="font-semibold text-gray-800">End-to-End Services</h3>
+              <p class="text-gray-600 text-sm">From planning to execution — we handle it all
+</p>
             </div>
           </div>
         </div>
