@@ -1,0 +1,236 @@
+/* Main Container */
+.gc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Courses Section */
+.gc-courses-section {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 123, 255, 0.1);
+  width: calc(55% - 15px);
+}
+
+.gc-header {
+  margin-bottom: 25px;
+}
+
+.gc-title {
+  color: #2c3e50;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gc-title span {
+  color: #007BFF;
+}
+
+.gc-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #007BFF, #00BFFF);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.gc-subtitle {
+  color: #34495e;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.gc-course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.gc-course-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.gc-course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.1);
+  border-color: #007BFF;
+}
+
+.gc-course-card h3 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+}
+
+.gc-course-card p {
+  color: #7f8c8d;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.gc-course-icon {
+  font-size: 2rem;
+  color: #007BFF;
+}
+
+.gc-featured {
+  background: linear-gradient(135deg, #007BFF, #00BFFF);
+  color: white;
+}
+
+.gc-featured h3, .gc-featured p {
+  color: white !important;
+}
+
+.gc-featured .gc-course-icon {
+  color: white;
+}
+
+/* About Section */
+.gc-about-section {
+  width: calc(45% - 15px);
+  display: flex;
+  flex-direction: column;
+}
+
+.gc-about-content {
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+  border-radius: 16px;
+  padding: 40px 30px;
+  color: white;
+  height: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gc-about-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.gc-about-title span {
+  color: #00BFFF;
+}
+
+.gc-about-divider {
+  width: 60px;
+  height: 3px;
+  background: #00BFFF;
+  margin-bottom: 25px;
+  border-radius: 2px;
+}
+
+.gc-about-text {
+  color: #ecf0f1;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.gc-highlights {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.gc-highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  border-radius: 8px;
+  min-width: 120px;
+}
+
+.gc-highlight-icon {
+  font-size: 1.2rem;
+}
+
+.gc-highlight-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.gc-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #00BFFF;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.gc-contact-button:hover {
+  background-color: #007BFF;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+}
+
+.gc-contact-button svg {
+  transition: transform 0.3s ease;
+}
+
+.gc-contact-button:hover svg {
+  transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .gc-courses-section, .gc-about-section {
+    width: 100%;
+  }
+  
+  .gc-course-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .gc-container {
+    padding: 20px 15px;
+  }
+  
+  .gc-courses-section, .gc-about-content {
+    padding: 25px 20px;
+  }
+  
+  .gc-title {
+    font-size: 1.8rem;
+  }
+  
+  .gc-highlights {
+    flex-direction: column;
+  }
+  
+  .gc-highlight-item {
+    width: 100%;
+  }
+}
