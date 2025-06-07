@@ -110,28 +110,6 @@
         </div>
       </section>
 
-      <!-- What You'll Learn -->
-      <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">What You'll Learn</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <% const learnPoints = course.learnPoints || [
-            'Master key concepts and techniques',
-            'Build practical, real-world applications',
-            'Develop problem-solving skills',
-            'Gain industry-relevant knowledge',
-            'Work with modern tools and technologies',
-            'Prepare for certifications or job interviews'
-          ]; %>
-          <% learnPoints.forEach(point => { %>
-            <div class="flex items-start">
-              <div class="mt-1 mr-2 text-indigo-500">
-                <i class="fas fa-check-circle"></i>
-              </div>
-              <span class="text-gray-700"><%= point %></span>
-            </div>
-          <% }); %>
-        </div>
-      </section>
 
       <!-- Curriculum -->
       <section class="bg-white rounded-xl p-6 course-card border border-gray-100">
@@ -174,42 +152,34 @@
         <div class="p-6">
           <div class="flex justify-between items-center mb-4">
             <div>
-              <% if (course.price && course.originalPrice) { %>
-                <span class="text-3xl font-bold text-gray-900">₹<%= course.price %></span>
-                <span class="ml-2 text-lg text-gray-500 line-through">₹<%= course.originalPrice %></span>
-                <span class="ml-2 bg-red-100 text-red-800 text-xs font-semibold px-2 py-1 rounded">
-                  <%= Math.round((1 - course.price/course.originalPrice)*100) %>% OFF
-                </span>
-              <% } else { %>
-                <span class="text-3xl font-bold text-gray-900"><%= course.price ? `₹${course.price}` : 'FREE' %></span>
-              <% } %>
+                <span class="text-3xl font-bold text-gray-900"><%= course.title %></span>
             </div>
           </div>
           
           <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-200 mb-4">
-            Enroll Now
+            Call With Us
           </button>
           
           <div class="text-center text-sm text-gray-500 mb-4">
-            <span>30-Day Money-Back Guarantee</span>
+            <span>Your Carrier - Our Responsiblity</span>
           </div>
           
           <div class="space-y-3 text-sm">
             <div class="flex items-center">
               <i class="fas fa-video text-gray-400 mr-3 w-5"></i>
-              <span><%= course.hours || '30+' %> hours on-demand video</span>
+              <span>1-on-1 expert consultation sessions</span>
             </div>
             <div class="flex items-center">
               <i class="fas fa-file-alt text-gray-400 mr-3 w-5"></i>
-              <span><%= course.resources || '15+' %> downloadable resources</span>
+              <span>20+ strategy templates and resources</span>
             </div>
             <div class="flex items-center">
               <i class="fas fa-mobile-alt text-gray-400 mr-3 w-5"></i>
-              <span>Access on mobile and TV</span>
+              <span>Access via mobile, tablet, or desktop</span>
             </div>
             <div class="flex items-center">
               <i class="fas fa-certificate text-gray-400 mr-3 w-5"></i>
-              <span><%= course.certificate ? 'Certificate of completion' : 'No certificate' %></span>
+              <span>No hidden charges or long-term contracts</span>
             </div>
           </div>
         </div>
