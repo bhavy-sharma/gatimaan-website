@@ -6,47 +6,68 @@
       <p class="gc-news-subtitle">Stay informed with our latest announcements</p>
     </div>
 
-    <div class="gc-news-table-container">
-      <table class="gc-news-table">
-        <thead>
-          <tr>
-            <th class="gc-date-col">Date</th>
-            <th class="gc-desc-col">Description</th>
-            <th class="gc-action-col">Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if (newsList && newsList.length > 0) { %>
-            <% newsList.forEach(news => { %>
+    <div class="gc-news-content">
+      <% if (newsList && newsList.length > 0) { %>
+        <!-- Desktop Table View -->
+        <div class="gc-news-table-container">
+          <table class="gc-news-table">
+            <thead>
               <tr>
-                <td class="gc-news-date">
-                  <span class="gc-news-day"><%= new Date(news.createdAt).getDate() %></span>
-                  <span class="gc-news-month"><%= new Date(news.createdAt).toLocaleString('en-IN', { month: 'short' }) %></span>
-                  <span class="gc-news-year"><%= new Date(news.createdAt).getFullYear() %></span>
-                </td>
-                <td class="gc-news-desc"><%= news.description %></td>
-                <td class="gc-news-action">
-                  <a href="<%= news.newsLink %>" target="_blank" class="gc-news-link">
-                    View Details
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </a>
-                </td>
+                <th class="gc-date-col">Date</th>
+                <th class="gc-desc-col">Description</th>
+                <th class="gc-action-col">Details</th>
               </tr>
-            <% }) %>
-          <% } else { %>
-            <tr class="gc-no-news">
-              <td colspan="3">
-                <div class="gc-empty-state">
-                  <span class="gc-empty-icon">📰</span>
-                  <p>No news updates available at this time</p>
-                </div>
-              </td>
-            </tr>
-          <% } %>
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              <% newsList.forEach(news => { %>
+                <tr>
+                  <td class="gc-news-date">
+                    <span class="gc-news-day"><%= new Date(news.createdAt).getDate() %></span>
+                    <span class="gc-news-month"><%= new Date(news.createdAt).toLocaleString('en-IN', { month: 'short' }) %></span>
+                    <span class="gc-news-year"><%= new Date(news.createdAt).getFullYear() %></span>
+                  </td>
+                  <td class="gc-news-desc"><%= news.description %></td>
+                  <td class="gc-news-action">
+                    <a href="<%= news.newsLink %>" target="_blank" class="gc-news-link">
+                      View Details
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="gc-news-cards">
+          <% newsList.forEach(news => { %>
+            <div class="gc-news-card">
+              <div class="gc-card-date">
+                <span class="gc-card-day"><%= new Date(news.createdAt).getDate() %></span>
+                <span class="gc-card-month"><%= new Date(news.createdAt).toLocaleString('en-IN', { month: 'short' }) %></span>
+                <span class="gc-card-year"><%= new Date(news.createdAt).getFullYear() %></span>
+              </div>
+              <div class="gc-card-content">
+                <p class="gc-card-desc"><%= news.description %></p>
+                <a href="<%= news.newsLink %>" target="_blank" class="gc-card-link">
+                  View Details
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <div class="gc-empty-state">
+          <span class="gc-empty-icon">📰</span>
+          <p>No news updates available at this time</p>
+        </div>
+      <% } %>
     </div>
   </div>
 </section>
