@@ -5,12 +5,17 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: auto;
   font-family: 'Poppins', sans-serif;
   background-color: #f4f4f9;
   color: #333;
   background-image: url('../../images/contact-bg.jpg');
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  line-height: 1.6;
 }
 
 .contact-container {
@@ -43,7 +48,8 @@ body {
   align-items: center;
   text-align: center;
   flex: 1 1 250px;
-  transition: background-color 0.5s ease-in;
+  min-width: 250px;
+  transition: all 0.3s ease;
 }
 
 .info-box:hover {
@@ -80,7 +86,7 @@ body {
   color: #fdede2;
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.3s ease;
 }
 
 .info-box:hover .con-icon {
@@ -98,6 +104,7 @@ body {
 .left-column,
 .right-column {
   flex: 1 1 400px;
+  min-width: 300px;
 }
 
 .left-column {
@@ -186,6 +193,13 @@ body {
   font-size: 1rem;
   background-color: rgba(255, 255, 255, 0.8);
   color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  background-color: #fff;
+  outline: none;
 }
 
 .form-group textarea {
@@ -213,15 +227,26 @@ body {
   .contact-info,
   .contact-content {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .info-box {
     padding: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .con-icon {
     height: 60px;
     width: 60px;
     font-size: 1.2rem;
+  }
+
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
   }
 }
