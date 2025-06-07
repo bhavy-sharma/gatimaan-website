@@ -80,12 +80,14 @@ body {
 /* Hamburger Menu */
 .hamburger {
   display: none;
+  margin-left: 130px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
 }
+
 
 .hamburger span {
   display: block;
