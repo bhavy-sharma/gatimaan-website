@@ -209,45 +209,50 @@
   </main>
 
   <!-- FAQ Section -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about the course</p>
+<section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h2>
+    <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about the course</p>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <% const faqs = course.faqs || [
+      { question: "Do I need any prior knowledge before using this platform?", answer: "Not at all. Our consultancy is built for all students—whether you're just starting or need guidance at any stage." },
+      { question: "What kind of help do you provide to students?", answer: "We help with university forms, admit cards, results, course selection, and provide career counseling and exam preparation tips—all in Hindi-friendly guidance." },
+      { question: " How long do I get access to this platform?", answer: "Once registered, you’ll get lifetime access to our latest updates, resources, and consultancy support." },
+      { question: "Is this service paid or free?", answer: "Most of our resources are free. Some advanced services or personalized consulting may have a minimal fee, which will be clearly mentioned." }
+    ]; %>
+
+ <% faqs.forEach((faq, index) => { %>
+  <div class="faq-item border-b border-gray-100 last:border-b-0">
+    <div class="faq-question flex justify-between items-center p-6 cursor-pointer">
+      <h3 class="font-medium text-gray-800"><%= faq.question %></h3>
+      <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 faq-btn"></i>
     </div>
-    
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-      <% const faqs = course.faqs || [
-        { question: "Do I need any prior experience?", answer: "No, this course is designed for beginners but also covers advanced topics." },
-        { question: "How long do I have access to the course?", answer: "You'll have lifetime access to all course materials." },
-        { question: "Can I get a refund if I'm not satisfied?", answer: "Yes, we offer a 30-day money-back guarantee with no questions asked." },
-        { question: "Will I receive a certificate after completion?", answer: "Yes, you'll receive a verifiable certificate upon completing all course requirements." }
-      ]; %>
-      <% faqs.forEach((faq, index) => { %>
-        <div class="border-b border-gray-100 last:border-b-0">
-          <div class="flex justify-between items-center p-6 cursor-pointer">
-            <h3 class="font-medium text-gray-800"><%= faq.question %></h3>
-            <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-          </div>
-          <div class="px-6 pb-6 pt-2 hidden">
-            <p class="text-gray-600"><%= faq.answer %></p>
-          </div>
-        </div>
-      <% }); %>
+    <div class="faq-answer px-6 pb-6 pt-0 hidden">
+      <p class="text-gray-600"><%= faq.answer %></p>
     </div>
-  </section>
+  </div>
+<% }); %>
+  </div>
+</section>
 
 
-  <script>
-    // Simple FAQ toggle functionality
-    document.querySelectorAll('.faqs div:nth-child(odd)').forEach(item => {
-      item.addEventListener('click', () => {
-        const answer = item.nextElementSibling;
-        answer.classList.toggle('hidden');
-        const icon = item.querySelector('i');
-        icon.classList.toggle('transform');
-        icon.classList.toggle('rotate-180');
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".faq-question").forEach(question => {
+      question.addEventListener("click", function () {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector("i");
+
+        // Toggle visibility
+        answer.classList.toggle("hidden");
+        
+        // Optional: Rotate chevron icon
+        if (icon) icon.classList.toggle("rotate-180");
       });
     });
-  </script>
+  });
+</script>
 </body>
 </html>
