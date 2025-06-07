@@ -1,19 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-   <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhatsApp + Back to Top</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* FAB Container */
+    .fab-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .fab-button {
+      background-color: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .fab-button img {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .fab-button.cross::before {
+      content: '✕';
+      font-size: 28px;
+      color: white;
+      position: absolute;
+    }
+
+    .fab-button.cross img {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .fab-options {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .fab-container.active .fab-options {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .fab-option {
+      background-color: white;
+      color: black;
+      text-decoration: none;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.3s;
+    }
+
+    .fab-option:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+    }
+
+    #topBtn:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
-  <a href="https://wa.me/+918279980079?text=Hi%20I'm%20interested%20in%20your%20course!"
-   target="_blank"
-   class="fixed bottom-12 right-1 z-50 bg-transparent text-white p-3 lg:mb-5 sm:mb-2 flex items-center justify-center transition-all duration-300 hover:scale-105">
+  <!-- WhatsApp Floating Button with Options -->
+  <div class="fab-container" id="fabContainer">
+    <div class="fab-options">
+      <a href="https://wa.me/+918279980079?text=Hi%20I'm%20interested%20in%20your%20course!" target="_blank" class="fab-option">📱 WhatsApp</a>
+      <a href="tel:+918279980079" class="fab-option">📞 Call</a>
+    </div>
+    <div class="fab-button" id="fabButton">
+      <img src="/images/whatsap.png" alt="WhatsApp Icon" />
+    </div>
+  </div>
 
-  <img src="/images/whatsap.png" alt="WhatsApp icon" class="h-10 sm:h-12 sm:w-12">
+  <!-- Back to Top Button -->
+  <button onclick="scrollToTop()" id="topBtn" title="Go to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-</a>
+  <script>
+    const topBtn = document.getElementById("topBtn");
+    const fabContainer = document.getElementById('fabContainer');
+    const fabButton = document.getElementById('fabButton');
+
+    window.onscroll = function () {
+      const show = document.body.scrollTop > 300 || document.documentElement.scrollTop > 300;
+      topBtn.style.display = show ? "block" : "none";
+      fabContainer.style.bottom = show ? "80px" : "20px";
+    };
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    fabButton.addEventListener('click', () => {
+      fabContainer.classList.toggle('active');
+      fabButton.classList.toggle('cross');
+    });
+  </script>
 
 </body>
 </html>

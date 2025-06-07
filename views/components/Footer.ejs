@@ -50,22 +50,21 @@
 
 <script>
   const topBtn = document.getElementById("topBtn");
+  const whatsappBtn = document.getElementById("whatsappBtn");
 
-  // Show the button after scrolling down 300px
   window.onscroll = function () {
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-      topBtn.style.display = "block";
+    const showBtn = document.body.scrollTop > 300 || document.documentElement.scrollTop > 300;
+
+    topBtn.style.display = showBtn ? "block" : "none";
+
+    if (showBtn) {
+      whatsappBtn.classList.add("shift-up");
     } else {
-      topBtn.style.display = "none";
+      whatsappBtn.classList.remove("shift-up");
     }
   };
 
-  // Scroll to top smoothly
   function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
-
 </script>

@@ -134,3 +134,30 @@
     font-size: 16px;
   }
 }
+  .floating-whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 998;
+    transition: bottom 0.3s ease;
+  }
+
+  .floating-whatsapp.shift-up {
+    bottom: 80px; /* Adjust upward when top button is visible */
+  }
+
+  /* #topBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    z-index: 999;
+    background-color: #333;
+    color: white;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  } */
+
