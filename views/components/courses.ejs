@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animated Course Cards</title>
 </head>
+
 <body>
   <div class="course-container">
     <div class="course-header">
       <h1>Discover Our Courses</h1>
       <p>Interactive learning experiences with modern animations</p>
     </div>
-    
+
     <div class="course-grid">
       <% courses.forEach(function(course) { %>
         <div class="course-card">
           <div class="course-image-container">
-            <img src="<%= course.imageUrl || 'https://source.unsplash.com/random/600x400?education' %>" alt="<%= course.title %>" class="course-image">
+            <img src="<%= course.imageUrl || 'https://source.unsplash.com/random/600x400?education' %>"
+              alt="<%= course.title %>" class="course-image">
             <span class="course-badge">Popular</span>
           </div>
-          
+
           <div class="course-content">
-            <h3 class="course-title"><%= course.title %></h3>
-            <p class="course-description"><%= course.shortDescription %></p>
-            
+            <h3 class="course-title">
+              <%= course.title %>
+            </h3>
+            <p class="course-description">
+              <%= course.shortDescription %>
+            </p>
+
             <div class="course-meta">
               <span class="course-price">
                 <% if(course.price) { %>
                   $<%= course.price %>
-                <% } else { %>
-                <% } %>
+                    <% } else { %>
+                      <% } %>
               </span>
               <div class="course-rating">
                 <div class="stars">★★★★★</div>
-                <span>(<%= course.rating || 4.8 %>)</span>
+                <span>(<%= (Math.random() * (5 - 3.8) + 3.8).toFixed(1) %>)</span>
               </div>
+
             </div>
-            
+
             <a href="/courses/<%= course._id %>" class="course-button">
               Read more →
             </a>
           </div>
         </div>
-      <% }) %>
+        <% }) %>
     </div>
   </div>
 </body>
+
 </html>
