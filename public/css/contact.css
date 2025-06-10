@@ -18,6 +18,10 @@ html, body {
   line-height: 1.6;
 }
 
+body {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+}
+
 .contact-container {
   max-width: 1200px;
   margin: 2rem auto;
@@ -250,3 +254,90 @@ html, body {
     font-size: 1rem;
   }
 }
+
+.contact-info,
+.contact-content {
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center; /* Improves centering on small screens */
+}
+
+.info-box {
+  flex: 1 1 calc(100% - 2rem);
+  max-width: 100%;
+}
+@media (min-width: 600px) {
+  .info-box {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+@media (min-width: 900px) {
+  .info-box {
+    flex: 1 1 calc(33.33% - 2rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1rem;
+  }
+
+  .info-box {
+    margin-bottom: 1rem;
+  }
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+html, body {
+  background-color: #f4f4f9;
+  background-image: url('../../images/contact-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 600px) {
+  html, body {
+    background-size: auto 100%;
+    background-position: top;
+  }
+}
+
+.social-links a {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .con-icon {
+    height: 50px;
+    width: 50px;
+    font-size: 1rem;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 790px) {
+  .email{
+  font-size: 0.8rem;
+}
+}
+
