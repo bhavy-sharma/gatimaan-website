@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Course</title>
+</head>
+<body>
+  <h1>Edit Course</h1>
+
+  <% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+  <% } %>
+
+  <form action="/courses/admin/edit/<%= course._id %>" method="POST">
+    <label>Image URL:</label>
+    <input type="text" name="imageUrl" value="<%= course.imageUrl %>" /><br/>
+
+    <label>Title:</label>
+    <input type="text" name="title" value="<%= course.title %>" /><br/>
+
+    <label>Short Description:</label>
+    <input type="text" name="shortDescription" value="<%= course.shortDescription %>" /><br/>
+
+    <label>Long Description:</label>
+    <textarea name="longDesciption"><%= course.longDesciption %></textarea><br/>
+
+    <label>Admin Password:</label>
+    <input type="password" name="adminPassword" /><br/>
+
+    <button type="submit">Update Course</button>
+  </form>
+</body>
+</html>

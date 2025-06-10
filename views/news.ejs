@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= category %> News</title>
+  <title>News & Updates</title>
 
   <!-- Bootstrap CSS (CDN) -->
   <link
@@ -13,7 +13,7 @@
   />
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/news.css">
+  <link rel="stylesheet" href="/css/news-section.css">
 
   <!-- Optional: Custom styles -->
   <style>
@@ -47,34 +47,79 @@
   <!-- Header Include -->
   <%- include("./components/Header.ejs") %>
 
-  <div class="container">
-    <h2><%= category %> News</h2>
+ <section class="gc-news-section">
+  <div class="gc-news-container">
+    <div class="gc-news-header">
+      <h2 class="gc-news-title">News & <span>Updates</span></h2>
+      <div class="gc-news-divider"></div>
+      <p class="gc-news-subtitle">Stay informed with our latest announcements</p>
+    </div>
 
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered align-middle">
-        <thead class="table-dark">
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>News Title</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div class="gc-news-content">
+      <% if (newsList && newsList.length > 0) { %>
+        <!-- Desktop Table View -->
+        <div class="gc-news-table-container">
+          <table class="gc-news-table">
+            <thead>
+              <tr>
+                <th class="gc-date-col">Date</th>
+                <th class="gc-desc-col">Description</th>
+                <th class="gc-action-col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% newsList.forEach(news => { %>
+                <tr>
+                  <td class="gc-news-date">
+                    <span><%= new Date(news.createdAt).getDate() %></span>
+                    <span><%= new Date(news.createdAt).toLocaleString('en-IN', { month: 'short' }) %></span>
+                    <span><%= new Date(news.createdAt).getFullYear() %></span>
+                  </td>
+                  <td class="gc-news-desc"><%= news.description %></td>
+                  <td class="gc-news-action">
+                    <a href="<%= news.newsLink %>" target="_blank" class="gc-news-link">
+                      View Details
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="gc-news-cards">
           <% newsList.forEach(news => { %>
-            <tr>
-              <td data-label="Title"><%= news.title %></td>
-              <td data-label="Description"><%= news.description %></td>
-              <td data-label="News Title"><%= news.newsTitle %></td>
-              <td data-label="Link">
-                <a href="<%= news.newsLink %>" target="_blank" class="btn btn-sm btn-primary">Read More</a>
-              </td>
-            </tr>
+            <div class="gc-news-card">
+              <div class="gc-card-date">
+                <span class="gc-card-day"><%= new Date(news.createdAt).getDate() %></span>
+                <span class="gc-card-month"><%= new Date(news.createdAt).toLocaleString('en-IN', { month: 'short' }) %></span>
+                <span class="gc-card-year"><%= new Date(news.createdAt).getFullYear() %></span>
+              </div>
+              <div class="gc-card-content">
+                <p class="gc-card-desc"><%= news.description %></p>
+                <a href="<%= news.newsLink %>" target="_blank" class="gc-card-link">
+                  View Details
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           <% }) %>
-        </tbody>
-      </table>
+        </div>
+      <% } else { %>
+        <div class="gc-empty-state">
+          <span class="gc-empty-icon">📰</span>
+          <p>No news updates available at this time</p>
+        </div>
+      <% } %>
     </div>
   </div>
+</section>
 
   <!-- Footer Include -->
   <%- include("./components/Footer.ejs") %>
