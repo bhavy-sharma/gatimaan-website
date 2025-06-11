@@ -15,6 +15,61 @@
 
         <main>
             <div class="contact-container">
+
+                
+                <!-- Main Content Section -->
+                <div class="contact-content">
+                     <div class="right-column">
+                        <h2>Get in Touch With Us!</h2>
+                        <form action="/contact" method="POST" class="contact-form" name="submit-to-google-sheet">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <!-- Hidden input to indicate Sheet1 -->
+                            <input type="hidden" name="sheetType" value="Sheet1" />
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div id="message" class="text-center"></div>
+                    <div class="left-column">
+                        <h2>Contact Our Support Team</h2>
+                        <p>We're Here to Help! Reach out to us via phone, email, or through the contact form below, and
+                            let us support you in achieving all of your academic goals. Your journey to international
+                            education starts here!</p>
+                        <ul class="support-info">
+                            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:onlinegatimaan@gmail.com" class="email"
+                                    style="text-decoration: none; color: white;"> &nbsp; onlinegatimaan@gmail.com</a></li>
+                            <li><i class="fas fa-phone"></i> Phone: <a href="tel:+918279980079"
+                                    style="text-decoration: none; color: white;"> &nbsp; +91 8279980079</a></li>
+                            <li><i class="fas fa-map-marker-alt"></i> Address: Kuncha Raja ji, Sikandrabad <br> District
+                                : Bulandshahr - 203205</li>
+                        </ul>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
                 <!-- Header Section -->
                 <header class="contact-header">
                     <div class="contact-info">
@@ -48,58 +103,6 @@
                     </div>
                 </header>
 
-                <!-- Main Content Section -->
-                <div class="contact-content">
-                    <div class="left-column">
-                        <h2>Contact Our Support Team</h2>
-                        <p>We're Here to Help! Reach out to us via phone, email, or through the contact form below, and
-                            let us support you in achieving all of your academic goals. Your journey to international
-                            education starts here!</p>
-                        <ul class="support-info">
-                            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:onlinegatimaan@gmail.com" class="email"
-                                    style="text-decoration: none; color: white;"> &nbsp; onlinegatimaan@gmail.com</a></li>
-                            <li><i class="fas fa-phone"></i> Phone: <a href="tel:+918279980079"
-                                    style="text-decoration: none; color: white;"> &nbsp; +91 8279980079</a></li>
-                            <li><i class="fas fa-map-marker-alt"></i> Address: Kuncha Raja ji, Sikandrabad <br> District
-                                : Bulandshahr - 203205</li>
-                        </ul>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="right-column">
-                        <h2>Get in Touch With Us!</h2>
-                        <form action="/contact" method="POST" class="contact-form" name="submit-to-google-sheet">
-                            <div class="form-group">
-                                <label for="name">Name:</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phone">Phone Number:</label>
-                                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message:</label>
-                                <textarea id="message" name="message" required></textarea>
-                            </div>
-                            <!-- Hidden input to indicate Sheet1 -->
-                            <input type="hidden" name="sheetType" value="Sheet1" />
-                            <button type="submit">Send Message</button>
-                        </form>
-                    </div>
-
-                    <div id="message" class="text-center"></div>
-                </div>
-            </div>
             </div>
         </main>
         <%- include("../components/whatsappIcon.ejs") %>

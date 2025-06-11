@@ -80,7 +80,7 @@ body {
 /* Hamburger Menu */
 .hamburger {
   display: none;
-  margin-left: 130px;
+  margin-left: 160px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -100,6 +100,9 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 5px;
+  }
   .hamburger {
     display: block;
   }

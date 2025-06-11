@@ -216,3 +216,29 @@
         font-size: 2rem;
       }
     }
+
+
+    .course-card {
+  display: flex;
+  flex-direction: column;
+}
+.course-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Important */
+  padding: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+.course-meta {
+  margin-top: auto; /* Pushes next element (button) to bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.course-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Uncomment this */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
